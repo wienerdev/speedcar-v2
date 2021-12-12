@@ -21,7 +21,7 @@
 
 
         <EditText
-            android:id="@+id/nomeCompleto"
+            android:id="@+id/edtNomeCompleto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
@@ -37,7 +37,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/dtNascimento"
+            android:id="@+id/edtDtNascimento"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -50,12 +50,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nomeCompleto"
+            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompleto"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/cpf"
+            android:id="@+id/edtCpf"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -68,12 +68,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dtNascimento"
+            app:layout_constraintTop_toBottomOf="@+id/edtDtNascimento"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/telefone"
+            android:id="@+id/edtTelefone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -86,12 +86,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cpf"
+            app:layout_constraintTop_toBottomOf="@+id/edtCpf"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/endereco"
+            android:id="@+id/edtEndereco"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -104,12 +104,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/telefone"
+            app:layout_constraintTop_toBottomOf="@+id/edtTelefone"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/modeloVeiculo"
+            android:id="@+id/edtModeloVeiculo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -122,12 +122,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/endereco"
+            app:layout_constraintTop_toBottomOf="@+id/edtEndereco"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/placaVeiculo"
+            android:id="@+id/edtPlacaVeiculo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -140,12 +140,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/modeloVeiculo"
+            app:layout_constraintTop_toBottomOf="@+id/edtModeloVeiculo"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/corVeiculo"
+            android:id="@+id/edtCorVeiculo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -158,12 +158,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/placaVeiculo"
+            app:layout_constraintTop_toBottomOf="@+id/edtPlacaVeiculo"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/edtEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -176,12 +176,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/corVeiculo"
+            app:layout_constraintTop_toBottomOf="@+id/edtCorVeiculo"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/senha"
+            android:id="@+id/edtSenha"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -195,12 +195,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/edtEmail"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/senhaConfirmada"
+            android:id="@+id/edtSenhaConfirmada"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -214,7 +214,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/senha"
+            app:layout_constraintTop_toBottomOf="@+id/edtSenha"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
@@ -230,7 +230,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/senhaConfirmada"
+            app:layout_constraintTop_toBottomOf="@+id/edtSenhaConfirmada"
             app:layout_constraintVertical_bias="0.695"
             app:layout_constraintWidth_percent=".8" />
 
@@ -248,8 +248,8 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/speedcar_logo"
         app:layout_constraintVertical_bias=".3"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"

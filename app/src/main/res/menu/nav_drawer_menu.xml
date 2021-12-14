@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/contaUsuario"
+        android:title="Conta" />
+
+    <item
+        android:id="@+id/viagens"
+        android:title="Viagens" />
+
+    <item
+        android:id="@+id/viagensRealizadas"
+        android:title="Viagens Realizadas" />
+
+    <item
+        android:id="@+id/pagamentos"
+        android:title="Pagamentos" />
+
+    <item
+        android:id="@+id/logout"
+        android:title="Sair" />
+</menu>

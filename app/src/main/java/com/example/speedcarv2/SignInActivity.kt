@@ -17,18 +17,18 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        val btRegistrar = findViewById<Button>(R.id.btnRegistrar);
-        val edNomeCompleto = findViewById<EditText>(R.id.edtNomeCompleto);
-        val edDtNascimento = findViewById<EditText>(R.id.edtDtNascimento);
-        val edCpf = findViewById<EditText>(R.id.edtCpf);
-        val edTelefone = findViewById<EditText>(R.id.edtTelefone);
-        val edEndereco = findViewById<EditText>(R.id.edtEndereco);
-        val edModeloVeiculo = findViewById<EditText>(R.id.edtModeloVeiculo);
-        val edPlacaVeiculo = findViewById<EditText>(R.id.edtPlacaVeiculo);
-        val edCorVeiculo = findViewById<EditText>(R.id.edtCorVeiculo);
-        val edEmail = findViewById<EditText>(R.id.edtEmail);
-        val edSenha = findViewById<EditText>(R.id.edtSenha);
-        val edSenhaConfirmada = findViewById<EditText>(R.id.edtSenhaConfirmada);
+        val btRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        val edNomeCompleto = findViewById<EditText>(R.id.edtNomeCompleto)
+        val edDtNascimento = findViewById<EditText>(R.id.edtDtNascimento)
+        val edCpf = findViewById<EditText>(R.id.edtCpf)
+        val edTelefone = findViewById<EditText>(R.id.edtTelefone)
+        val edEndereco = findViewById<EditText>(R.id.edtEndereco)
+        val edModeloVeiculo = findViewById<EditText>(R.id.edtModeloVeiculo)
+        val edPlacaVeiculo = findViewById<EditText>(R.id.edtPlacaVeiculo)
+        val edCorVeiculo = findViewById<EditText>(R.id.edtCorVeiculo)
+        val edEmail = findViewById<EditText>(R.id.edtEmail)
+        val edSenha = findViewById<EditText>(R.id.edtSenha)
+        val edSenhaConfirmada = findViewById<EditText>(R.id.edtSenhaConfirmada)
 
 
         btRegistrar.setOnClickListener {
@@ -126,8 +126,8 @@ class SignInActivity : AppCompatActivity() {
                  */
                 else -> {
 
-                    val email: String = edEmail.text.toString().trim { it <= ' ' };
-                    var senha: String = edSenha.text.toString().trim { it <= ' ' };
+                    val email: String = edEmail.text.toString().trim { it <= ' ' }
+                    var senha: String = edSenha.text.toString().trim { it <= ' ' }
 
                     // Create an instance and create a register user with email and password
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
@@ -135,7 +135,7 @@ class SignInActivity : AppCompatActivity() {
                             OnCompleteListener<AuthResult> { task ->
 
                                if (task.isSuccessful) {
-                                   val firebaseUser: FirebaseUser = task.result!!.user!!;
+                                   val firebaseUser: FirebaseUser = task.result!!.user!!
 
                                    Toast.makeText(
                                        this@SignInActivity,
@@ -147,16 +147,16 @@ class SignInActivity : AppCompatActivity() {
                                        Intent(this@SignInActivity, HomeActivity::class.java)
                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                    intent.putExtra("user_id", firebaseUser.uid)
-                                   intent.putExtra("email_id", email);
+                                   intent.putExtra("email_id", email)
                                    startActivity(intent);
-                                   finish();
+                                   finish()
 
                                } else {
                                    Toast.makeText(
                                        this@SignInActivity,
                                        task.exception!!.message.toString(),
                                        Toast.LENGTH_SHORT
-                                   ).show();
+                                   ).show()
                                }
                             })
                 }

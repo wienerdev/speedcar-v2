@@ -5,11 +5,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
+    android:background="@color/corBackground"
     android:id="@+id/drawerLayout">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtMsgHome1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:text="O que você"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/txtMsgHome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="deseja fazer hoje?"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMsgHome1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtCategorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Categorias"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMsgHome2"
+        app:layout_constraintVertical_bias="0.072" />
+
+    <Button
+        android:id="@+id/btnViagens"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/cards_categorias"
+        android:text="Viagens"
+        android:textColor="#FF0035"
+        android:fontFamily="@font/poppins_semibold"
+        android:drawableTop="@drawable/viagens"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtViagensRec"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCategorias"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <Button
+        android:id="@+id/btnConta"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/cards_categorias"
+        android:text="Conta"
+        android:textColor="#FF0035"
+        android:fontFamily="@font/poppins_semibold"
+        android:drawableTop="@drawable/conta"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtViagensRec"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toEndOf="@+id/btnViagens"
+        app:layout_constraintTop_toBottomOf="@+id/txtCategorias"
+        app:layout_constraintVertical_bias="0.197" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="12dp"
+        android:text="Pagamento"
+        android:textColor="#FF0035"
+        android:fontFamily="@font/poppins_semibold"
+        android:drawableTop="@drawable/pagamento"
+        android:padding="15dp"
+        android:background="@drawable/cards_categorias"
+        app:layout_constraintBottom_toTopOf="@+id/txtViagensRec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toEndOf="@+id/btnConta"
+        app:layout_constraintTop_toBottomOf="@+id/txtCategorias"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <TextView
+        android:id="@+id/txtViagensRec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Viagens Recentes"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCategorias"
+        app:layout_constraintVertical_bias="0.331" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

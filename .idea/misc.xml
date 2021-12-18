@@ -3,19 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable-v24/button_nova_viagem.xml" value="0.24351851851851852" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.17685185185185184" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/button_bg.xml" value="0.23148148148148148" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/button_detalhes_viagens.xml" value="0.24351851851851852" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/cards_categorias.xml" value="0.22592592592592592" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/edit_text_bg.xml" value="0.22592592592592592" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.24351851851851852" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17685185185185184" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/layout_card_relatorio_viagem.xml" value="0.24351851851851852" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/layout_card_viagens.xml" value="0.24351851851851852" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/my_button_bg.xml" value="0.22592592592592592" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/round_button.xml" value="0.23148148148148148" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/rounded_button.xml" value="0.23148148148148148" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/drawable/vie_bg.xml" value="0.17685185185185184" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/account_activity.xml" value="0.264" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/activity_sign_in2.xml" value="0.1526268115942029" />
+        <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/activity_viagem_realizada.xml" value="0.264" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/layout/nav_header.xml" value="0.2" />
         <entry key="..\:/Dev/Workspace/SpeedCarV2/app/src/main/res/menu/nav_drawer_menu.xml" value="0.17592592592592593" />
       </map>

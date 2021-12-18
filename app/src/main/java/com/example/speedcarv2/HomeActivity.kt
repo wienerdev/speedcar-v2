@@ -24,6 +24,16 @@ class HomeActivity : AppCompatActivity() {
         val emailId = intent.getStringExtra("email_id")
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val navView = findViewById<NavigationView>(R.id.navView)
+        val btnDetalhes = findViewById<Button>(R.id.btnDetalhes)
+        val btnDetalhes2 = findViewById<Button>(R.id.btnDetalhes2)
+
+        btnDetalhes.setOnClickListener {
+            navigateViagemRealizada()
+        }
+
+        btnDetalhes2.setOnClickListener {
+            navigateViagemRealizada()
+        }
 
         // Menu Hamburguer
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -51,6 +61,11 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
+    }
+
+    private fun navigateViagemRealizada() {
+        val viagemRealizadaActivity = Intent(this, ViagemRealizadaActivity::class.java);
+        startActivity(viagemRealizadaActivity)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

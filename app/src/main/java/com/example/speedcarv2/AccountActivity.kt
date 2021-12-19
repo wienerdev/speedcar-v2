@@ -4,20 +4,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class AccountActivity : AppCompatActivity() {
+
+    lateinit var toggle: ActionBarDrawerToggle
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.account_activity)
 
-        val btRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        val btnVoltar = findViewById<Button>(R.id.btnVoltar)
+        val btnEditarInfo = findViewById<Button>(R.id.btnEditarInfo)
         val edNomeCompleto = findViewById<EditText>(R.id.edtNomeCompleto)
         val edDtNascimento = findViewById<EditText>(R.id.edtDtNascimento)
         val edCpf = findViewById<EditText>(R.id.edtCpf)
@@ -29,9 +37,42 @@ class AccountActivity : AppCompatActivity() {
         val edEmail = findViewById<EditText>(R.id.edtEmail)
         val edSenha = findViewById<EditText>(R.id.edtSenha)
         val edSenhaConfirmada = findViewById<EditText>(R.id.edtSenhaConfirmada)
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        val navView = findViewById<NavigationView>(R.id.navView)
+
+        // Menu Hamburguer
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.contaUsuario -> Toast.makeText(applicationContext, "Clicou em Conta",
+                    Toast.LENGTH_SHORT).show()
+
+                R.id.viagens -> Toast.makeText(applicationContext, "Clicou em Viagens",
+                    Toast.LENGTH_SHORT).show()
+
+                R.id.viagensRealizadas -> Toast.makeText(applicationContext, "Clicou em Viagens Realizadas",
+                    Toast.LENGTH_SHORT).show()
+
+                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
+                    Toast.LENGTH_SHORT).show()
+
+                R.id.logout -> logout()
+            }
+            true
+        }
 
 
-        btRegistrar.setOnClickListener {
+        btnVoltar.setOnClickListener {
+            val homeActivity = Intent(this, HomeActivity::class.java);
+            startActivity(homeActivity)
+        }
+
+        btnEditarInfo.setOnClickListener {
             when {
                 /*
                 TextUtils.isEmpty(edNomeCompleto.text.toString().trim { it <= ' ' }) -> {
@@ -162,5 +203,20 @@ class AccountActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun logout() {
+        FirebaseAuth.getInstance().signOut()
+        startActivity(Intent(this@AccountActivity, LoginActivity::class.java));
+        finish();
     }
 }

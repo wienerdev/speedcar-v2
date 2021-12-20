@@ -24,12 +24,13 @@
             android:textSize="23dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.206"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.099" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ConstraintLayout5"
             android:layout_width="335dp"
             android:layout_height="200dp"
             android:background="@drawable/layout_card_relatorio_viagem"
@@ -168,6 +169,42 @@
                 app:layout_constraintVertical_bias="0.754" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnCriarViagem"
+            android:layout_width="171dp"
+            android:layout_height="49dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/button_bg"
+            android:text="Criar Viagem"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ConstraintLayout5"
+            app:layout_constraintVertical_bias="0.966"
+            app:layout_constraintWidth_percent=".8" />
+
+        <Button
+            android:id="@+id/btnVoltar3"
+            android:layout_width="171dp"
+            android:layout_height="49dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/button_bg_white"
+            android:text="Voltar"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.116"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ConstraintLayout5"
+            app:layout_constraintVertical_bias="0.966"
+            app:layout_constraintWidth_percent=".8" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

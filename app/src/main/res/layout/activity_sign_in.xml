@@ -20,153 +20,28 @@
         app:layout_constraintVertical_bias="1">
 
 
-        <EditText
-            android:id="@+id/edtNomeCompleto"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Nome Completo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="48dp"
+            android:elevation="40dp"
+            android:fontFamily="@font/lobster"
+            android:text="Registro de conta"
+            android:textColor="#FF5F5F"
+            android:textSize="75px"
+            app:layout_constraintBottom_toTopOf="@+id/edtEmail"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.027"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtDtNascimento"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Data de Nascimento"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompleto"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtCpf"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="CPF"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtDtNascimento"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtTelefone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Telefone"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtCpf"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtEndereco"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Endereço"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtTelefone"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtModeloVeiculo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Modelo do Veículo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEndereco"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtPlacaVeiculo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Placa do Veículo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtModeloVeiculo"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtCorVeiculo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Cor do Veículo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtPlacaVeiculo"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
+            app:layout_constraintTop_toBottomOf="@+id/tab_layout"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginBottom="444dp"
             android:background="@drawable/edit_text_bg"
             android:hint="E-mail"
             android:paddingLeft="20dp"
@@ -174,10 +49,8 @@
             android:paddingBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtCorVeiculo"
-            app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
@@ -229,9 +102,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtSenhaConfirmada"
-            app:layout_constraintVertical_bias="0.695"
+            app:layout_constraintVertical_bias="0.133"
             app:layout_constraintWidth_percent=".8" />
 
         <com.google.android.material.tabs.TabLayout
@@ -242,7 +116,7 @@
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0.003" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

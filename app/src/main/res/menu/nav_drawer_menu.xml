@@ -10,10 +10,6 @@
         android:title="Viagens" />
 
     <item
-        android:id="@+id/viagensRealizadas"
-        android:title="Viagens Realizadas" />
-
-    <item
         android:id="@+id/pagamentos"
         android:title="Pagamentos" />
 

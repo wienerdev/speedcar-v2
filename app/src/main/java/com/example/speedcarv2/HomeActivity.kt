@@ -56,14 +56,9 @@ class HomeActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.contaUsuario -> Toast.makeText(applicationContext, "Clicou em Conta",
-                Toast.LENGTH_SHORT).show()
+                R.id.contaUsuario -> navigateToAccount()
 
-                R.id.viagens -> Toast.makeText(applicationContext, "Clicou em Viagens",
-                    Toast.LENGTH_SHORT).show()
-
-                R.id.viagensRealizadas -> Toast.makeText(applicationContext, "Clicou em Viagens Realizadas",
-                    Toast.LENGTH_SHORT).show()
+                R.id.viagens -> navigateToViagens()
 
                 R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
                     Toast.LENGTH_SHORT).show()
@@ -93,5 +88,15 @@ class HomeActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signOut()
         startActivity(Intent(this@HomeActivity, LoginActivity::class.java));
         finish();
+    }
+
+    fun navigateToAccount() {
+        val accountActivity = Intent(this, AccountActivity::class.java);
+        startActivity(accountActivity)
+    }
+
+    fun navigateToViagens() {
+        val viagensActivity = Intent(this, ViagensActivity::class.java);
+        startActivity(viagensActivity)
     }
 }

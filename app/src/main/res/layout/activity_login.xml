@@ -29,7 +29,7 @@
             android:text="Bem vindo(a) de volta!"
             android:textColor="#FF5F5F"
             android:textSize="75px"
-            app:layout_constraintBottom_toTopOf="@+id/edtEmail"
+            app:layout_constraintBottom_toTopOf="@+id/edtEmailLG"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
             app:layout_constraintVertical_bias="0" />
 
         <EditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtEmailLG"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintWidth_percent=".8"
@@ -64,7 +64,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edtSenha"
+            android:id="@+id/edtSenhaLG"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -78,12 +78,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEmail"
+            app:layout_constraintTop_toBottomOf="@+id/edtEmailLG"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnLoginLG"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
@@ -100,7 +100,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <Button
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnSignInLG"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
@@ -117,7 +117,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <TextView
-            android:id="@+id/forget_pass"
+            android:id="@+id/btnForgetPassLG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Esqueceu a senha?"
@@ -126,20 +126,19 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/edtSenha"
+            app:layout_constraintEnd_toEndOf="@+id/edtSenhaLG"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtSenha" />
+            app:layout_constraintTop_toBottomOf="@+id/edtSenhaLG" />
 
         <TextView
-            android:id="@+id/forget_pass2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OU"
             android:textSize="18dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
+            app:layout_constraintBottom_toTopOf="@+id/btnSignInLG"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/btnLoginLG" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

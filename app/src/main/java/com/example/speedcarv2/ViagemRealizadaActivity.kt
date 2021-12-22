@@ -1,47 +1,42 @@
 package com.example.speedcarv2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.speedcarv2.databinding.ActivityViagemRealizadaBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class ViagemRealizadaActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var binding: ActivityViagemRealizadaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_viagem_realizada)
+        binding = ActivityViagemRealizadaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
-        val navView = findViewById<NavigationView>(R.id.navView)
-        val btnVoltar4 = findViewById<Button>(R.id.btnVoltar4)
-        val btnIniciarViagem = findViewById<Button>(R.id.btnIniciarViagem)
-
-        btnVoltar4.setOnClickListener {
+        binding.btnVoltarVGRL.setOnClickListener {
             val homeActivity = Intent(this, HomeActivity::class.java);
             startActivity(homeActivity)
         }
 
-        btnIniciarViagem.setOnClickListener {
+        binding.btnIniciarViagemVGRL.setOnClickListener {
             val detalhesViagemActivity = Intent(this, DetalhesViagemActivity::class.java);
             startActivity(detalhesViagemActivity)
         }
 
         // Menu Hamburguer
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
-        drawerLayout.addDrawerListener(toggle)
+        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
+        binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        navView.setNavigationItemSelectedListener {
+        binding.navView.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.contaUsuario -> navigateToAccount()
 

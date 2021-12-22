@@ -1,32 +1,32 @@
 package com.example.speedcarv2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.example.speedcarv2.databinding.ActivityDetalhesViagemBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.speedcarv2.databinding.ActivityCriarViagemBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class DetalhesViagemActivity : AppCompatActivity() {
+class CriarViagemActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var binding: ActivityDetalhesViagemBinding
+    private lateinit var binding: ActivityCriarViagemBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetalhesViagemBinding.inflate(layoutInflater)
+        binding = ActivityCriarViagemBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnVoltarDVGS.setOnClickListener {
-            val viagensActivity = Intent(this, ViagensActivity::class.java);
-            startActivity(viagensActivity)
+        binding.btnCancelarCRVG.setOnClickListener {
+            val homeActivity = Intent(this, HomeActivity::class.java);
+            startActivity(homeActivity)
         }
 
-        binding.btnEditarViagemDVGS.setOnClickListener {
-            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java);
-            startActivity(edtViagemActivity)
+        binding.btnSalvarViagemCRVG.setOnClickListener {
+            val homeActivity = Intent(this, HomeActivity::class.java);
+            startActivity(homeActivity)
         }
 
         // Menu Hamburguer
@@ -62,7 +62,7 @@ class DetalhesViagemActivity : AppCompatActivity() {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this@DetalhesViagemActivity, LoginActivity::class.java));
+        startActivity(Intent(this@CriarViagemActivity, LoginActivity::class.java));
         finish();
     }
 
@@ -76,3 +76,4 @@ class DetalhesViagemActivity : AppCompatActivity() {
         startActivity(viagensActivity)
     }
 }
+

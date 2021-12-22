@@ -1,37 +1,26 @@
 package com.example.speedcarv2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.speedcarv2.databinding.ActivitySignInBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class SignInActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySignInBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        binding = ActivitySignInBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btRegistrar = findViewById<Button>(R.id.btnRegistrar)
-        val edNomeCompleto = findViewById<EditText>(R.id.edtNomeCompleto)
-        val edDtNascimento = findViewById<EditText>(R.id.edtDtNascimento)
-        val edCpf = findViewById<EditText>(R.id.edtCpf)
-        val edTelefone = findViewById<EditText>(R.id.edtTelefone)
-        val edEndereco = findViewById<EditText>(R.id.edtEndereco)
-        val edModeloVeiculo = findViewById<EditText>(R.id.edtModeloVeiculo)
-        val edPlacaVeiculo = findViewById<EditText>(R.id.edtPlacaVeiculo)
-        val edCorVeiculo = findViewById<EditText>(R.id.edtCorVeiculo)
-        val edEmail = findViewById<EditText>(R.id.edtEmail)
-        val edSenha = findViewById<EditText>(R.id.edtSenha)
-        val edSenhaConfirmada = findViewById<EditText>(R.id.edtSenhaConfirmada)
-
-
-        btRegistrar.setOnClickListener {
+        binding.btnRegistrarRC.setOnClickListener {
             when {
                 /*
                 TextUtils.isEmpty(edNomeCompleto.text.toString().trim { it <= ' ' }) -> {
@@ -99,7 +88,7 @@ class SignInActivity : AppCompatActivity() {
                 }
                  */
 
-                TextUtils.isEmpty(edEmail.text.toString().trim { it <= ' ' }) -> {
+                TextUtils.isEmpty(binding.edtEmailRC.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@SignInActivity,
                         "Insira seu email!",
@@ -107,7 +96,7 @@ class SignInActivity : AppCompatActivity() {
                     ).show()
                 }
 
-                TextUtils.isEmpty(edSenha.text.toString().trim { it <= ' ' }) -> {
+                TextUtils.isEmpty(binding.edtSenhaRC.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@SignInActivity,
                         "Insira sua senha!",
@@ -126,8 +115,8 @@ class SignInActivity : AppCompatActivity() {
                  */
                 else -> {
 
-                    val email: String = edEmail.text.toString().trim { it <= ' ' }
-                    var senha: String = edSenha.text.toString().trim { it <= ' ' }
+                    val email: String = binding.edtEmailRC.text.toString().trim { it <= ' ' }
+                    var senha: String = binding.edtSenhaRC.text.toString().trim { it <= ' ' }
 
                     // Create an instance and create a register user with email and password
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)

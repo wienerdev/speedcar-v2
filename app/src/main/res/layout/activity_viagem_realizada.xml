@@ -234,7 +234,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/btnIniciarViagem"
+            android:id="@+id/btnIniciarViagemVGRL"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:background="@drawable/button_bg"
@@ -251,7 +251,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <Button
-            android:id="@+id/btnVoltar4"
+            android:id="@+id/btnVoltarVGRL"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:background="@drawable/button_bg_white"
@@ -260,7 +260,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnIniciarViagem"
+            app:layout_constraintEnd_toStartOf="@+id/btnIniciarViagemVGRL"
             app:layout_constraintHorizontal_bias="0.744"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ConstraintLayout6"

@@ -30,15 +30,15 @@
             android:text="Registro de conta"
             android:textColor="#FF5F5F"
             android:textSize="75px"
-            app:layout_constraintBottom_toTopOf="@+id/edtEmail"
+            app:layout_constraintBottom_toTopOf="@+id/edtEmailRC"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab_layout"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtEmailRC"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="444dp"
@@ -54,7 +54,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtSenha"
+            android:id="@+id/edtSenhaRC"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -68,12 +68,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEmail"
+            app:layout_constraintTop_toBottomOf="@+id/edtEmailRC"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtSenhaConfirmada"
+            android:id="@+id/edtSenhaConfirmadaRC"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -87,12 +87,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtSenha"
+            app:layout_constraintTop_toBottomOf="@+id/edtSenhaRC"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
         <Button
-            android:id="@+id/btnRegistrar"
+            android:id="@+id/btnRegistrarRC"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
@@ -104,7 +104,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtSenhaConfirmada"
+            app:layout_constraintTop_toBottomOf="@+id/edtSenhaConfirmadaRC"
             app:layout_constraintVertical_bias="0.133"
             app:layout_constraintWidth_percent=".8" />
 

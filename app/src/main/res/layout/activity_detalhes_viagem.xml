@@ -15,7 +15,7 @@
         tools:context=".ViagemRealizadaActivity">
 
         <Button
-            android:id="@+id/btnVoltar2"
+            android:id="@+id/btnVoltarDVGS"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:background="@drawable/button_bg_white"
@@ -25,14 +25,14 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintHorizontal_bias="0.108"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
             app:layout_constraintVertical_bias="0.625"
             app:layout_constraintWidth_percent=".8" />
 
         <Button
-            android:id="@+id/btnEditarInfo2"
+            android:id="@+id/btnIniciarViagemDVGS"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:background="@drawable/button_bg"
@@ -191,7 +191,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnDetalhesViagem"
+                android:id="@+id/btnEditarViagemDVGS"
                 android:layout_width="25dp"
                 android:layout_height="24dp"
                 android:background="@drawable/icon_edit_viagem"
@@ -232,7 +232,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/edtNomeCompleto"
+                app:layout_constraintBottom_toTopOf="@+id/edtNomeCompletoDVGS"
                 app:layout_constraintEnd_toStartOf="@+id/textView17"
                 app:layout_constraintHorizontal_bias="0.612"
                 app:layout_constraintStart_toStartOf="parent"
@@ -241,7 +241,7 @@
                 app:srcCompat="@drawable/icon_relatorio_viagem" />
 
             <EditText
-                android:id="@+id/edtNomeCompleto"
+                android:id="@+id/edtNomeCompletoDVGS"
                 android:layout_width="300dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="72dp"
@@ -258,7 +258,7 @@
                 app:layout_constraintWidth_percent=".8" />
 
             <EditText
-                android:id="@+id/edtCpf"
+                android:id="@+id/edtCpfDVGS"
                 android:layout_width="140dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="10dp"
@@ -271,11 +271,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.108"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtNomeCompleto"
+                app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoDVGS"
                 app:layout_constraintWidth_percent=".8" />
 
             <EditText
-                android:id="@+id/edtTelefone"
+                android:id="@+id/edtTelefoneDVGS"
                 android:layout_width="140dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="8dp"
@@ -288,11 +288,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.912"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtNomeCompleto"
+                app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoDVGS"
                 app:layout_constraintWidth_percent=".8" />
 
             <Button
-                android:id="@+id/btnVoltar"
+                android:id="@+id/btnSalvarClienteDVGS"
                 android:layout_width="171dp"
                 android:layout_height="35dp"
                 android:layout_marginBottom="4dp"
@@ -304,7 +304,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtTelefone"
+                app:layout_constraintTop_toBottomOf="@+id/edtTelefoneDVGS"
                 app:layout_constraintVertical_bias="0.538"
                 app:layout_constraintWidth_percent=".8" />
 
@@ -312,7 +312,7 @@
                 android:id="@+id/imageView3"
                 android:layout_width="16dp"
                 android:layout_height="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/edtNomeCompleto"
+                app:layout_constraintBottom_toTopOf="@+id/edtNomeCompletoDVGS"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.801"
                 app:layout_constraintStart_toEndOf="@+id/textView17"
@@ -337,7 +337,7 @@
             app:layout_constraintVertical_bias="0.583" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/txtAdcPassageiroDVGS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="28dp"

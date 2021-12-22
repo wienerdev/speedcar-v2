@@ -157,7 +157,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnDetalhesViagem"
+                android:id="@+id/btnDetalhesViagemVGS"
                 android:layout_width="25dp"
                 android:layout_height="24dp"
                 android:background="@drawable/icon_detalhes_viagem"
@@ -171,7 +171,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/btnCriarViagem"
+            android:id="@+id/btnCriarViagemVGS"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:layout_marginBottom="44dp"
@@ -189,7 +189,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <Button
-            android:id="@+id/btnVoltar3"
+            android:id="@+id/btnVoltarVGS"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:layout_marginBottom="44dp"

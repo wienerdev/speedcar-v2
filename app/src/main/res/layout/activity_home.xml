@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.034" />
 
     <Button
-        android:id="@+id/btnViagens"
+        android:id="@+id/btnViagensHM"
         android:layout_width="120dp"
         android:layout_height="90dp"
         android:layout_marginStart="12dp"
@@ -74,7 +74,7 @@
         app:layout_constraintVertical_bias="0.19" />
 
     <Button
-        android:id="@+id/btnConta"
+        android:id="@+id/btnContaHM"
         android:layout_width="120dp"
         android:layout_height="90dp"
         android:background="@drawable/cards_categorias"
@@ -84,14 +84,14 @@
         android:text="Conta"
         android:textColor="#FF0035"
         app:layout_constraintBottom_toTopOf="@+id/txtViagensRec"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/btnPagamentoHM"
         app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toEndOf="@+id/btnViagens"
+        app:layout_constraintStart_toEndOf="@+id/btnViagensHM"
         app:layout_constraintTop_toBottomOf="@+id/txtCategorias"
         app:layout_constraintVertical_bias="0.204" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnPagamentoHM"
         android:layout_width="120dp"
         android:layout_height="90dp"
         android:layout_marginEnd="12dp"
@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txtViagensRec"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.97"
-        app:layout_constraintStart_toEndOf="@+id/btnConta"
+        app:layout_constraintStart_toEndOf="@+id/btnContaHM"
         app:layout_constraintTop_toBottomOf="@+id/txtCategorias"
         app:layout_constraintVertical_bias="0.204" />
 
@@ -132,6 +132,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnCriarViagemHM"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -155,7 +156,7 @@
 
 
         <TextView
-            android:id="@+id/txtRegiaoViagem"
+            android:id="@+id/txtRegiaoViagemHM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -170,7 +171,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtOrigemViagem"
+            android:id="@+id/txtOrigemViagemHM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
@@ -185,7 +186,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtDestinoViagem"
+            android:id="@+id/txtDestinoViagemHM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -197,10 +198,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.173"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagem" />
+            app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemHM" />
 
         <TextView
-            android:id="@+id/txtPassageiros"
+            android:id="@+id/txtPassageirosHM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -212,10 +213,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.173"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDestinoViagem" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDestinoViagemHM" />
 
         <TextView
-            android:id="@+id/txtTempoViagem"
+            android:id="@+id/txtTempoViagemHM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -227,10 +228,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPassageiros" />
+            app:layout_constraintTop_toBottomOf="@+id/txtPassageirosHM" />
 
         <TextView
-            android:id="@+id/txtValorViagem"
+            android:id="@+id/txtValorViagemHM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -242,10 +243,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.173"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTempoViagem" />
+            app:layout_constraintTop_toBottomOf="@+id/txtTempoViagemHM" />
 
         <Button
-            android:id="@+id/btnDetalhes"
+            android:id="@+id/btnDetalhesHM"
             android:layout_width="83dp"
             android:layout_height="30dp"
             android:background="@drawable/button_detalhes_viagens"
@@ -256,7 +257,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtValorViagem" />
+            app:layout_constraintTop_toBottomOf="@+id/txtValorViagemHM" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -364,7 +365,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtTempoViagem2" />
 
         <Button
-            android:id="@+id/btnDetalhes2"
+            android:id="@+id/btnDetalhesHM2"
             android:layout_width="83dp"
             android:layout_height="30dp"
             android:background="@drawable/button_detalhes_viagens"

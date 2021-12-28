@@ -22,72 +22,6 @@ class SignInActivity : AppCompatActivity() {
 
         binding.btnRegistrarRC.setOnClickListener {
             when {
-                /*
-                TextUtils.isEmpty(edNomeCompleto.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira seu nome completo!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(edDtNascimento.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira sua data de nascimento!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(edCpf.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira seu CPF!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(edTelefone.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira seu telefone com DDD!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(edEndereco.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira seu endereço!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(edModeloVeiculo.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira o modelo do seu veículo!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(edPlacaVeiculo.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira a placa do seu veículo!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(edCorVeiculo.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Insira a cor do seu veículo!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                 */
-
                 TextUtils.isEmpty(binding.edtEmailRC.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@SignInActivity,
@@ -103,51 +37,47 @@ class SignInActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
-                /*
-                TextUtils.isEmpty(edSenhaConfirmada.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        "Confirme a sua senha!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                 */
                 else -> {
 
                     val email: String = binding.edtEmailRC.text.toString().trim { it <= ' ' }
                     var senha: String = binding.edtSenhaRC.text.toString().trim { it <= ' ' }
+                    var senhaConfirmada: String = binding.edtSenhaConfirmadaRC.text.toString().trim { it <= ' ' }
 
                     // Create an instance and create a register user with email and password
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
-                        .addOnCompleteListener(
-                            OnCompleteListener<AuthResult> { task ->
+                    if(senha.equals(senhaConfirmada)) {
+                        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
+                            .addOnCompleteListener(
+                                OnCompleteListener<AuthResult> { task ->
 
-                               if (task.isSuccessful) {
-                                   val firebaseUser: FirebaseUser = task.result!!.user!!
+                                    if (task.isSuccessful) {
+                                        val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                                   Toast.makeText(
-                                       this@SignInActivity,
-                                       "Você foi registrado com sucesso!",
-                                       Toast.LENGTH_SHORT
-                                   ).show()
+                                        Toast.makeText(
+                                            this@SignInActivity,
+                                            "Você foi registrado com sucesso!",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
 
-                                   val intent =
-                                       Intent(this@SignInActivity, HomeActivity::class.java)
-                                   intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                   intent.putExtra("user_id", firebaseUser.uid)
-                                   intent.putExtra("email_id", email)
-                                   startActivity(intent);
-                                   finish()
+                                        val intent =
+                                            Intent(this@SignInActivity, HomeActivity::class.java)
+                                        intent.flags =
+                                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                        intent.putExtra("user_id", firebaseUser.uid)
+                                        intent.putExtra("email_id", email)
+                                        startActivity(intent);
+                                        finish()
 
-                               } else {
-                                   Toast.makeText(
-                                       this@SignInActivity,
-                                       task.exception!!.message.toString(),
-                                       Toast.LENGTH_SHORT
-                                   ).show()
-                               }
-                            })
+                                    } else {
+                                        Toast.makeText(
+                                            this@SignInActivity,
+                                            task.exception!!.message.toString(),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                })
+                    } else {
+                        Toast.makeText(this, "A senha deve ser a mesma em ambos os campos!", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

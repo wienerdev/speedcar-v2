@@ -28,12 +28,12 @@
             app:layout_constraintVertical_bias="0.038" />
 
         <Button
-            android:id="@+id/btnEditarInfoIP"
+            android:id="@+id/btnSalvarInfoEdtIP"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_bg"
-            android:text="Editar"
+            android:text="Salvar"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -41,12 +41,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.933"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEmailIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtEmailEdtIP"
             app:layout_constraintVertical_bias="0.712"
             app:layout_constraintWidth_percent=".8" />
 
         <Button
-            android:id="@+id/btnVoltarIP"
+            android:id="@+id/btnVoltarEdtIP"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:layout_marginBottom="16dp"
@@ -59,12 +59,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.108"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEmailIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtEmailEdtIP"
             app:layout_constraintVertical_bias="0.712"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtEmailIP"
+            android:id="@+id/edtEmailEdtIP"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -75,11 +75,11 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtCorVeiculoIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtCorVeiculoEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtCorVeiculoIP"
+            android:id="@+id/edtCorVeiculoEdtIP"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -90,11 +90,11 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtPlacaVeiculoIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtPlacaVeiculoEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtPlacaVeiculoIP"
+            android:id="@+id/edtPlacaVeiculoEdtIP"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -105,11 +105,11 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtModeloVeiculoIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtModeloVeiculoEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtModeloVeiculoIP"
+            android:id="@+id/edtModeloVeiculoEdtIP"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -120,11 +120,11 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEnderecoIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtEnderecoEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtEnderecoIP"
+            android:id="@+id/edtEnderecoEdtIP"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -135,11 +135,11 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtTelefoneIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtTelefoneEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtTelefoneIP"
+            android:id="@+id/edtTelefoneEdtIP"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -150,11 +150,11 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtCpfIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtCpfEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtCpfIP"
+            android:id="@+id/edtCpfEdtIP"
             android:layout_width="163dp"
             android:layout_height="44dp"
             android:layout_marginTop="8dp"
@@ -166,11 +166,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtDtNascimentoIP"
+            android:id="@+id/edtDtNascimentoEdtIP"
             android:layout_width="163dp"
             android:layout_height="44dp"
             android:layout_marginTop="8dp"
@@ -182,11 +182,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.165"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoIP"
+            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoEdtIP"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtNomeCompletoIP"
+            android:id="@+id/edtNomeCompletoEdtIP"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

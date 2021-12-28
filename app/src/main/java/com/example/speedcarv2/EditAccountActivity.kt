@@ -2,30 +2,25 @@ package com.example.speedcarv2
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.speedcarv2.databinding.AccountActivityBinding
+import com.example.speedcarv2.databinding.ActivityEditAccountBinding
 import com.example.speedcarv2.model.UserModel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.account_activity.*
 
-class AccountActivity : AppCompatActivity() {
+class EditAccountActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var binding: AccountActivityBinding
+    private lateinit var binding: ActivityEditAccountBinding
     private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = AccountActivityBinding.inflate(layoutInflater)
+        binding = ActivityEditAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Menu Hamburguer
@@ -50,16 +45,33 @@ class AccountActivity : AppCompatActivity() {
         }
 
         // Persistência dos dados
-        binding.btnEditarInfoIP.setOnClickListener {
-            val editAccountActivity = Intent(this, EditAccountActivity::class.java)
-            startActivity(editAccountActivity)
+        binding.btnSalvarInfoEdtIP.setOnClickListener {
+
+            val nomeCompleto = binding.edtNomeCompletoEdtIP.text.toString()
+            val dtNascimento = binding.edtDtNascimentoEdtIP.text.toString()
+            val cpf = binding.edtCpfEdtIP.text.toString()
+            val telefone = binding.edtTelefoneEdtIP.text.toString()
+            val endereco = binding.edtEnderecoEdtIP.text.toString()
+            val modeloVeiculo = binding.edtModeloVeiculoEdtIP.text.toString()
+            val placaVeiculo = binding.edtPlacaVeiculoEdtIP.text.toString()
+            val corVeiculo = binding.edtCorVeiculoEdtIP.text.toString()
+
+            database = FirebaseDatabase.getInstance().getReference("Users")
+            val user = UserModel(nomeCompleto, dtNascimento, cpf,
+                telefone, endereco, modeloVeiculo,
+                corVeiculo, placaVeiculo)
+
+            database.child(nomeCompleto).setValue(user).addOnSuccessListener {
+                Toast.makeText(this, "Informações salvas com sucesso!", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(this, "Erro ao salvar as informações!", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        binding.btnVoltarIP.setOnClickListener {
-            val homeActivity = Intent(this, HomeActivity::class.java)
+        binding.btnVoltarEdtIP.setOnClickListener {
+            val homeActivity = Intent(this, HomeActivity::class.java);
             startActivity(homeActivity)
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -73,7 +85,7 @@ class AccountActivity : AppCompatActivity() {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this@AccountActivity, LoginActivity::class.java));
+        startActivity(Intent(this@EditAccountActivity, LoginActivity::class.java));
         finish();
     }
 

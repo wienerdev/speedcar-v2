@@ -13,6 +13,7 @@ data class UserModel(
     val endereco: String? = null,
     val modeloVeiculo: String? = null,
     val corVeiculo: String? = null,
-    val placaVeiculo: String? = null) {
+    val placaVeiculo: String? = null,
+    val email: String? = null) {
 
 }

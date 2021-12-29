@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.MenuItem
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.set
 import com.example.speedcarv2.databinding.AccountActivityBinding
 import com.example.speedcarv2.model.UserModel
 import com.google.android.gms.tasks.OnCompleteListener
@@ -22,11 +25,16 @@ class AccountActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: AccountActivityBinding
     private lateinit var database: DatabaseReference
+    val uid = FirebaseAuth.getInstance().currentUser?.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = AccountActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (uid != null) {
+            readData(uid)
+        }
 
         // Menu Hamburguer
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
@@ -49,7 +57,6 @@ class AccountActivity : AppCompatActivity() {
             true
         }
 
-        // Persistência dos dados
         binding.btnEditarInfoIP.setOnClickListener {
             val editAccountActivity = Intent(this, EditAccountActivity::class.java)
             startActivity(editAccountActivity)
@@ -59,6 +66,7 @@ class AccountActivity : AppCompatActivity() {
             val homeActivity = Intent(this, HomeActivity::class.java)
             startActivity(homeActivity)
         }
+
 
     }
 
@@ -86,4 +94,40 @@ class AccountActivity : AppCompatActivity() {
         val viagensActivity = Intent(this, ViagensActivity::class.java);
         startActivity(viagensActivity)
     }
+
+    fun readData(uid: String) {
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+        database = FirebaseDatabase.getInstance().getReference("Users")
+
+        if (uid != null) {
+            database.child(uid).get().addOnSuccessListener {
+
+                val nomeCompleto = it.child("nomeCompleto").value
+                val dtNascimento = it.child("dtNascimento").value
+                val cpf = it.child("cpf").value
+                val telefone = it.child("telefone").value
+                val endereco = it.child("endereco").value
+                val modeloVeiculo = it.child("modeloVeiculo").value
+                val corVeiculo = it.child("corVeiculo").value
+                val placaVeiculo = it.child("placaVeiculo").value
+                val email = FirebaseAuth.getInstance().currentUser?.email
+
+                edtNomeCompletoIP.setText(nomeCompleto.toString())
+                edtDtNascimentoIP.setText(dtNascimento.toString())
+                edtCpfIP.setText(cpf.toString())
+                edtTelefoneIP.setText(telefone.toString())
+                edtEnderecoIP.setText(endereco.toString())
+                edtModeloVeiculoIP.setText(modeloVeiculo.toString())
+                edtCorVeiculoIP.setText(corVeiculo.toString())
+                edtPlacaVeiculoIP.setText(placaVeiculo.toString())
+                edtEmailIP.setText(email.toString())
+
+            }
+        } else {
+            Toast.makeText(this, "Usuário não encontrado!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }

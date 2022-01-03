@@ -20,17 +20,15 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnContaHM.setOnClickListener {
-            val accountActivity = Intent(this, AccountActivity::class.java);
-            startActivity(accountActivity)
+            navigateToAccount()
         }
 
         binding.btnViagensHM.setOnClickListener {
-            val viagensActivity = Intent(this, ViagensActivity::class.java);
-            startActivity(viagensActivity)
+            navigateToViagens()
         }
 
         binding.btnCriarViagemHM.setOnClickListener {
-            val criarViagemActivity = Intent(this, CriarViagemActivity::class.java);
+            val criarViagemActivity = Intent(this, CriarViagemActivity::class.java)
             startActivity(criarViagemActivity)
         }
 
@@ -65,11 +63,6 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun navigateViagemRealizada() {
-        val viagemRealizadaActivity = Intent(this, ViagemRealizadaActivity::class.java);
-        startActivity(viagemRealizadaActivity)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if(toggle.onOptionsItemSelected(item)) {
@@ -81,17 +74,22 @@ class HomeActivity : AppCompatActivity() {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this@HomeActivity, LoginActivity::class.java));
-        finish();
+        startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+        finish()
     }
 
     fun navigateToAccount() {
-        val accountActivity = Intent(this, AccountActivity::class.java);
+        val accountActivity = Intent(this, AccountActivity::class.java)
         startActivity(accountActivity)
     }
 
     fun navigateToViagens() {
-        val viagensActivity = Intent(this, ViagensActivity::class.java);
+        val viagensActivity = Intent(this, ViagensActivity::class.java)
         startActivity(viagensActivity)
+    }
+
+    fun navigateViagemRealizada() {
+        val viagemRealizadaActivity = Intent(this, ViagemRealizadaActivity::class.java)
+        startActivity(viagemRealizadaActivity)
     }
 }

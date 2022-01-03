@@ -7,12 +7,20 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.speedcarv2.databinding.ActivityCriarViagemBinding
+import com.example.speedcarv2.model.ViagemModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.DatabaseError
+
+
+
 
 class CriarViagemActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityCriarViagemBinding
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +56,34 @@ class CriarViagemActivity : AppCompatActivity() {
                 R.id.logout -> logout()
             }
             true
+        }
+
+        // Persistência dos dados
+        binding.btnSalvarViagemCRVG.setOnClickListener {
+
+            val regiao = binding.edtRegiaoCRVG.text.toString()
+            val origem = binding.edtOrigemCRVG.text.toString()
+            val destino = binding.edtDestinoCRVG.text.toString()
+            val preco = binding.edtPreOCRVG.text.toString()
+            val tempoMedio = binding.edtTempoMedioCRVG.text.toString()
+
+            val viagem = ViagemModel(regiao, origem, destino,
+                preco, tempoMedio)
+
+            val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+            if (uid != null) {
+                FirebaseDatabase.getInstance()
+                    .getReference("Trips")
+                    .child(uid)
+                    .setValue(viagem)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Informações salvas com sucesso!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Erro ao salvar as informações!", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            navigateToViagens()
         }
     }
 

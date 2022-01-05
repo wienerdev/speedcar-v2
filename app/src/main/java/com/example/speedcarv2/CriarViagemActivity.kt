@@ -32,11 +32,6 @@ class CriarViagemActivity : AppCompatActivity() {
             startActivity(homeActivity)
         }
 
-        binding.btnSalvarViagemCRVG.setOnClickListener {
-            val homeActivity = Intent(this, HomeActivity::class.java);
-            startActivity(homeActivity)
-        }
-
         // Menu Hamburguer
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
         binding.drawerLayout.addDrawerListener(toggle)
@@ -46,6 +41,8 @@ class CriarViagemActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId) {
+                R.id.homeApp -> navigateToHome()
+
                 R.id.contaUsuario -> navigateToAccount()
 
                 R.id.viagens -> navigateToViagens()
@@ -59,7 +56,7 @@ class CriarViagemActivity : AppCompatActivity() {
         }
 
         // Persistência dos dados
-        binding.btnSalvarViagemCRVG.setOnClickListener {
+        binding.btnIniciarViagemCRVG.setOnClickListener {
 
             val regiao = binding.edtRegiaoCRVG.text.toString()
             val origem = binding.edtOrigemCRVG.text.toString()
@@ -75,19 +72,6 @@ class CriarViagemActivity : AppCompatActivity() {
 
             databaseReference.child("Trips").push().setValue(viagem)
 
-            /* val key = database.getReference("Trips").push().key
-
-            if (viagemKey != null) {
-                FirebaseDatabase.getInstance()
-                    .getReference("Trips")
-                    .child(viagemKey)
-                    .setValue(viagem)
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Informações salvas com sucesso!", Toast.LENGTH_SHORT).show()
-                    }.addOnFailureListener {
-                        Toast.makeText(this, "Erro ao salvar as informações!", Toast.LENGTH_SHORT).show()
-                    }
-            } */
             navigateToViagens()
         }
     }
@@ -115,6 +99,11 @@ class CriarViagemActivity : AppCompatActivity() {
     fun navigateToViagens() {
         val viagensActivity = Intent(this, ViagensActivity::class.java);
         startActivity(viagensActivity)
+    }
+
+    fun navigateToHome() {
+        val homeActivity = Intent(this, HomeActivity::class.java)
+        startActivity(homeActivity)
     }
 }
 

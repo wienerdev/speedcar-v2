@@ -38,6 +38,8 @@ class EdtViagemActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId) {
+                R.id.homeApp -> navigateToHome()
+
                 R.id.contaUsuario -> navigateToAccount()
 
                 R.id.viagens -> navigateToViagens()
@@ -69,6 +71,11 @@ class EdtViagemActivity : AppCompatActivity() {
     fun navigateToAccount() {
         val accountActivity = Intent(this, AccountActivity::class.java);
         startActivity(accountActivity)
+    }
+
+    fun navigateToHome() {
+        val homeActivity = Intent(this, HomeActivity::class.java)
+        startActivity(homeActivity)
     }
 
     fun navigateToViagens() {

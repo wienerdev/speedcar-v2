@@ -28,11 +28,11 @@
             app:layout_constraintVertical_bias="0.038" />
 
         <Button
-            android:id="@+id/btnSalvarViagemCRVG"
+            android:id="@+id/btnIniciarViagemCRVG"
             android:layout_width="171dp"
             android:layout_height="49dp"
             android:background="@drawable/button_bg"
-            android:text="Salvar"
+            android:text="Iniciar Viagem"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -54,7 +54,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnSalvarViagemCRVG"
+            app:layout_constraintEnd_toStartOf="@+id/btnIniciarViagemCRVG"
             app:layout_constraintHorizontal_bias="0.543"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtTempoMedioCRVG"
@@ -75,6 +75,54 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtPreçoCRVG"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/edtNomePassageiroCRVG"
+            android:layout_width="329dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="Nome do Passageiro"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtTempoMedioCRVG"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/edtCpfPassageiroCRVG"
+            android:layout_width="329dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="CPF do Passageiro"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtNomePassageiroCRVG"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/edtTelefonePassageiroCRVG"
+            android:layout_width="329dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="Telefone do Passageiro"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtCpfPassageiroCRVG"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText

@@ -45,6 +45,8 @@ class AccountActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId) {
+                R.id.homeApp -> navigateToHome()
+
                 R.id.contaUsuario -> navigateToAccount()
 
                 R.id.viagens -> navigateToViagens()
@@ -95,6 +97,11 @@ class AccountActivity : AppCompatActivity() {
         startActivity(viagensActivity)
     }
 
+    fun navigateToHome() {
+        val homeActivity = Intent(this, HomeActivity::class.java)
+        startActivity(homeActivity)
+    }
+
     fun readData(uid: String) {
 
         val uid = FirebaseAuth.getInstance().currentUser?.uid
@@ -114,14 +121,30 @@ class AccountActivity : AppCompatActivity() {
                 val placaVeiculo = it.child("placaVeiculo").value
                 val email = FirebaseAuth.getInstance().currentUser?.email
 
-                edtNomeCompletoIP.setText(nomeCompleto.toString())
-                edtDtNascimentoIP.setText(dtNascimento.toString())
-                edtCpfIP.setText(cpf.toString())
-                edtTelefoneIP.setText(telefone.toString())
-                edtEnderecoIP.setText(endereco.toString())
-                edtModeloVeiculoIP.setText(modeloVeiculo.toString())
-                edtCorVeiculoIP.setText(corVeiculo.toString())
-                edtPlacaVeiculoIP.setText(placaVeiculo.toString())
+                if (nomeCompleto != null) {
+                    edtNomeCompletoIP.setText(nomeCompleto.toString())
+                }
+                if (dtNascimento != null) {
+                    edtDtNascimentoIP.setText(dtNascimento.toString())
+                }
+                if (cpf != null) {
+                    edtCpfIP.setText(cpf.toString())
+                }
+                if (telefone != null) {
+                    edtTelefoneIP.setText(telefone.toString())
+                }
+                if (endereco != null) {
+                    edtEnderecoIP.setText(endereco.toString())
+                }
+                if (modeloVeiculo != null) {
+                    edtModeloVeiculoIP.setText(modeloVeiculo.toString())
+                }
+                if (corVeiculo != null) {
+                    edtCorVeiculoIP.setText(corVeiculo.toString())
+                }
+                if (placaVeiculo != null) {
+                    edtPlacaVeiculoIP.setText(placaVeiculo.toString())
+                }
                 edtEmailIP.setText(email.toString())
 
             }

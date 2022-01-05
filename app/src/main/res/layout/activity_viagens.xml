@@ -157,10 +157,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnDetalhesViagemVGS"
+                android:id="@+id/btnEditarViagemVGS"
                 android:layout_width="25dp"
                 android:layout_height="24dp"
-                android:background="@drawable/icon_detalhes_viagem"
+                android:background="@drawable/icon_edit_viagem"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.816"

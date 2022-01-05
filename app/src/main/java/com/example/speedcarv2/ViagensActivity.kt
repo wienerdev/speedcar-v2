@@ -35,9 +35,9 @@ class ViagensActivity : AppCompatActivity() {
             startActivity(criarViagemActivity)
         }
 
-        binding.btnDetalhesViagemVGS.setOnClickListener {
-            val detalhesViagemActivity = Intent(this, DetalhesViagemActivity::class.java);
-            startActivity(detalhesViagemActivity)
+        binding.btnEditarViagemVGS.setOnClickListener {
+            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java);
+            startActivity(edtViagemActivity)
         }
 
         // Menu Hamburguer
@@ -49,6 +49,8 @@ class ViagensActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId) {
+                R.id.homeApp -> navigateToHome()
+
                 R.id.contaUsuario -> navigateToAccount()
 
                 R.id.viagens -> navigateToViagens()
@@ -86,6 +88,11 @@ class ViagensActivity : AppCompatActivity() {
     fun navigateToViagens() {
         val viagensActivity = Intent(this, ViagensActivity::class.java);
         startActivity(viagensActivity)
+    }
+
+    fun navigateToHome() {
+        val homeActivity = Intent(this, HomeActivity::class.java)
+        startActivity(homeActivity)
     }
 
     fun readData() {

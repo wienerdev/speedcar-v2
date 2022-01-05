@@ -3,13 +3,13 @@ package com.example.speedcarv2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.speedcarv2.databinding.ActivityViagensBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.account_activity.*
 import kotlinx.android.synthetic.main.activity_viagens.*
 
@@ -17,8 +17,6 @@ class ViagensActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityViagensBinding
-    private lateinit var database: DatabaseReference
-    val uid = FirebaseAuth.getInstance().currentUser?.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,29 +89,29 @@ class ViagensActivity : AppCompatActivity() {
     }
 
     fun readData() {
+        val rootRef = FirebaseDatabase.getInstance().reference
+        val viagemRef = rootRef.child("Trips")
 
-        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        val valueEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (ds in dataSnapshot.children) {
+                    val regiao = ds.child("regiao").getValue(String::class.java)
+                    val origem = ds.child("origem").getValue(String::class.java)
+                    val destino = ds.child("destino").getValue(String::class.java)
+                    val preco = ds.child("preco").getValue(String::class.java)
+                    val tempoMedio = ds.child("tempoMedio").getValue(String::class.java)
 
-        database = FirebaseDatabase.getInstance().getReference("Trips")
-
-        if (uid != null) {
-            database.child(uid).get().addOnSuccessListener {
-
-                val regiao = it.child("uid").value
-                val origem = it.child("origem").value
-                val destino = it.child("destino").value
-                val preco = it.child("preco").value
-                val tempoMedio = it.child("tempoMedio").value
-
-                txtRegiaoViagemVG.text = regiao.toString()
-                txtOrigemViagemVG.text = origem.toString()
-                txtDestinoViagemVG.text = destino.toString()
-                txtPrecoVG.text = preco.toString()
-                txtTempoViagemVG.text = tempoMedio.toString()
-
+                    txtRegiaoViagemVG.text = regiao.toString()
+                    txtOrigemViagemVG.text = origem.toString()
+                    txtDestinoViagemVG.text = destino.toString()
+                    txtPrecoVG.text = "R$" + preco.toString()
+                    txtTempoViagemVG.text = tempoMedio.toString() + " minutos"
+                }
             }
-        } else {
-            Toast.makeText(this, "Viagem não encontrada!", Toast.LENGTH_SHORT).show()
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("TAG", databaseError.getMessage()) //Don't ignore errors!
+            }
         }
+        viagemRef.addListenerForSingleValueEvent(valueEventListener)
     }
 }

@@ -70,19 +70,24 @@ class CriarViagemActivity : AppCompatActivity() {
             val viagem = ViagemModel(regiao, origem, destino,
                 preco, tempoMedio)
 
-            val uid = FirebaseAuth.getInstance().currentUser?.uid
+            val firebaseDatabase = FirebaseDatabase.getInstance()
+            val databaseReference = firebaseDatabase.reference
 
-            if (uid != null) {
+            databaseReference.child("Trips").push().setValue(viagem)
+
+            /* val key = database.getReference("Trips").push().key
+
+            if (viagemKey != null) {
                 FirebaseDatabase.getInstance()
                     .getReference("Trips")
-                    .child(uid)
+                    .child(viagemKey)
                     .setValue(viagem)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Informações salvas com sucesso!", Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener {
                         Toast.makeText(this, "Erro ao salvar as informações!", Toast.LENGTH_SHORT).show()
                     }
-            }
+            } */
             navigateToViagens()
         }
     }

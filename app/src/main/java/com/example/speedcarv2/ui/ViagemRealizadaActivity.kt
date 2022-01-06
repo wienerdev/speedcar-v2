@@ -43,7 +43,7 @@ class ViagemRealizadaActivity : AppCompatActivity() {
 
                 R.id.viagens -> navigateToViagens()
 
-                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
+                R.id.pagamentos -> Toast.makeText(applicationContext, "Pagamentos",
                     Toast.LENGTH_SHORT).show()
 
                 R.id.logout -> logout()

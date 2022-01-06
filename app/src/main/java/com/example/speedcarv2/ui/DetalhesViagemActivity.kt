@@ -1,4 +1,4 @@
-package com.example.speedcarv2
+package com.example.speedcarv2.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,38 +6,28 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.example.speedcarv2.databinding.ActivityHomeBinding
+import com.example.speedcarv2.R
+import com.example.speedcarv2.databinding.ActivityDetalhesViagemBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class HomeActivity : AppCompatActivity() {
+class DetalhesViagemActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityDetalhesViagemBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityDetalhesViagemBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnContaHM.setOnClickListener {
-            navigateToAccount()
+        binding.btnVoltarDVGS.setOnClickListener {
+            val viagensActivity = Intent(this, ViagensActivity::class.java);
+            startActivity(viagensActivity)
         }
 
-        binding.btnViagensHM.setOnClickListener {
-            navigateToViagens()
-        }
-
-        binding.btnCriarViagemHM.setOnClickListener {
-            val criarViagemActivity = Intent(this, CriarViagemActivity::class.java)
-            startActivity(criarViagemActivity)
-        }
-
-        binding.btnDetalhesHM.setOnClickListener {
-            navigateViagemRealizada()
-        }
-
-        binding.btnDetalhesHM2.setOnClickListener {
-            navigateViagemRealizada()
+        binding.btnEditarViagemDVGS.setOnClickListener {
+            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java);
+            startActivity(edtViagemActivity)
         }
 
         // Menu Hamburguer
@@ -49,8 +39,6 @@ class HomeActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.homeApp -> navigateToHome()
-
                 R.id.contaUsuario -> navigateToAccount()
 
                 R.id.viagens -> navigateToViagens()
@@ -62,7 +50,6 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -76,27 +63,17 @@ class HomeActivity : AppCompatActivity() {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
-        finish()
+        startActivity(Intent(this@DetalhesViagemActivity, LoginActivity::class.java));
+        finish();
     }
 
     fun navigateToAccount() {
-        val accountActivity = Intent(this, AccountActivity::class.java)
+        val accountActivity = Intent(this, AccountActivity::class.java);
         startActivity(accountActivity)
     }
 
     fun navigateToViagens() {
-        val viagensActivity = Intent(this, ViagensActivity::class.java)
+        val viagensActivity = Intent(this, ViagensActivity::class.java);
         startActivity(viagensActivity)
-    }
-
-    fun navigateToHome() {
-        val homeActivity = Intent(this, HomeActivity::class.java)
-        startActivity(homeActivity)
-    }
-
-    fun navigateViagemRealizada() {
-        val viagemRealizadaActivity = Intent(this, ViagemRealizadaActivity::class.java)
-        startActivity(viagemRealizadaActivity)
     }
 }

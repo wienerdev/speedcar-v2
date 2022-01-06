@@ -1,4 +1,4 @@
-package com.example.speedcarv2
+package com.example.speedcarv2.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

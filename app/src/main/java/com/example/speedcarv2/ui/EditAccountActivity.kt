@@ -1,39 +1,35 @@
-package com.example.speedcarv2
+package com.example.speedcarv2.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.MenuItem
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.set
-import com.example.speedcarv2.databinding.AccountActivityBinding
+import com.example.speedcarv2.R
+import com.example.speedcarv2.databinding.ActivityEditAccountBinding
 import com.example.speedcarv2.model.UserModel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.account_activity.*
+import kotlinx.android.synthetic.main.activity_edit_account.*
 
-class AccountActivity : AppCompatActivity() {
+class EditAccountActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var binding: AccountActivityBinding
+    private lateinit var binding: ActivityEditAccountBinding
     private lateinit var database: DatabaseReference
     val uid = FirebaseAuth.getInstance().currentUser?.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = AccountActivityBinding.inflate(layoutInflater)
+        binding = ActivityEditAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (uid != null) {
-            readData(uid)
+            readUserData(uid)
         }
 
         // Menu Hamburguer
@@ -59,17 +55,43 @@ class AccountActivity : AppCompatActivity() {
             true
         }
 
-        binding.btnEditarInfoIP.setOnClickListener {
-            val editAccountActivity = Intent(this, EditAccountActivity::class.java)
-            startActivity(editAccountActivity)
+        // Persistência dos dados
+        binding.btnSalvarInfoEdtIP.setOnClickListener {
+
+            val nomeCompleto = binding.edtNomeCompletoEdtIP.text.toString()
+            val dtNascimento = binding.edtDtNascimentoEdtIP.text.toString()
+            val cpf = binding.edtCpfEdtIP.text.toString()
+            val telefone = binding.edtTelefoneEdtIP.text.toString()
+            val endereco = binding.edtEnderecoEdtIP.text.toString()
+            val modeloVeiculo = binding.edtModeloVeiculoEdtIP.text.toString()
+            val placaVeiculo = binding.edtPlacaVeiculoEdtIP.text.toString()
+            val corVeiculo = binding.edtCorVeiculoEdtIP.text.toString()
+            val email = binding.edtEmailEdtIP.text.toString()
+
+            val user = UserModel(nomeCompleto, dtNascimento, cpf,
+                telefone, endereco, modeloVeiculo,
+                corVeiculo, placaVeiculo, email)
+
+            val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+            if (uid != null) {
+                FirebaseDatabase.getInstance()
+                    .getReference("Users")
+                    .child(uid)
+                    .setValue(user)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Informações salvas com sucesso!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Erro ao salvar as informações!", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            navigateToAccount()
         }
 
-        binding.btnVoltarIP.setOnClickListener {
-            val homeActivity = Intent(this, HomeActivity::class.java)
+        binding.btnVoltarEdtIP.setOnClickListener {
+            val homeActivity = Intent(this, HomeActivity::class.java);
             startActivity(homeActivity)
         }
-
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -83,7 +105,7 @@ class AccountActivity : AppCompatActivity() {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this@AccountActivity, LoginActivity::class.java));
+        startActivity(Intent(this@EditAccountActivity, LoginActivity::class.java));
         finish();
     }
 
@@ -102,7 +124,7 @@ class AccountActivity : AppCompatActivity() {
         startActivity(homeActivity)
     }
 
-    fun readData(uid: String) {
+    fun readUserData(uid: String) {
 
         val uid = FirebaseAuth.getInstance().currentUser?.uid
 
@@ -121,36 +143,19 @@ class AccountActivity : AppCompatActivity() {
                 val placaVeiculo = it.child("placaVeiculo").value
                 val email = FirebaseAuth.getInstance().currentUser?.email
 
-                if (nomeCompleto != null) {
-                    edtNomeCompletoIP.setText(nomeCompleto.toString())
-                }
-                if (dtNascimento != null) {
-                    edtDtNascimentoIP.setText(dtNascimento.toString())
-                }
-                if (cpf != null) {
-                    edtCpfIP.setText(cpf.toString())
-                }
-                if (telefone != null) {
-                    edtTelefoneIP.setText(telefone.toString())
-                }
-                if (endereco != null) {
-                    edtEnderecoIP.setText(endereco.toString())
-                }
-                if (modeloVeiculo != null) {
-                    edtModeloVeiculoIP.setText(modeloVeiculo.toString())
-                }
-                if (corVeiculo != null) {
-                    edtCorVeiculoIP.setText(corVeiculo.toString())
-                }
-                if (placaVeiculo != null) {
-                    edtPlacaVeiculoIP.setText(placaVeiculo.toString())
-                }
-                edtEmailIP.setText(email.toString())
+                edtNomeCompletoEdtIP.setText(nomeCompleto.toString())
+                edtDtNascimentoEdtIP.setText(dtNascimento.toString())
+                edtCpfEdtIP.setText(cpf.toString())
+                edtTelefoneEdtIP.setText(telefone.toString())
+                edtEnderecoEdtIP.setText(endereco.toString())
+                edtModeloVeiculoEdtIP.setText(modeloVeiculo.toString())
+                edtCorVeiculoEdtIP.setText(corVeiculo.toString())
+                edtPlacaVeiculoEdtIP.setText(placaVeiculo.toString())
+                edtEmailEdtIP.setText(email.toString())
 
             }
         } else {
             Toast.makeText(this, "Usuário não encontrado!", Toast.LENGTH_SHORT).show()
         }
     }
-
 }

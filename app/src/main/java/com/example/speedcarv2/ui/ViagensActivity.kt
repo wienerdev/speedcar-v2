@@ -1,5 +1,6 @@
-package com.example.speedcarv2
+package com.example.speedcarv2.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.ActivityViagensBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -96,8 +98,9 @@ class ViagensActivity : AppCompatActivity() {
     }
 
     fun readData() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
         val rootRef = FirebaseDatabase.getInstance().reference
-        val viagemRef = rootRef.child("Trips")
+        val viagemRef = uid?.let { rootRef.child("Trips").child(it) }
 
         val valueEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -115,10 +118,14 @@ class ViagensActivity : AppCompatActivity() {
                     txtTempoViagemVG.text = tempoMedio.toString() + " minutos"
                 }
             }
+
+            @SuppressLint("LongLogTag")
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.d("TAG", databaseError.getMessage()) //Don't ignore errors!
+                Log.d("Desculpe, erro no sistema", databaseError.getMessage())
             }
         }
-        viagemRef.addListenerForSingleValueEvent(valueEventListener)
+        if (viagemRef != null) {
+            viagemRef.addListenerForSingleValueEvent(valueEventListener)
+        }
     }
 }

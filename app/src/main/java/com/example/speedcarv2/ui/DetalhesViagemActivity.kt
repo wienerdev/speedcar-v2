@@ -1,32 +1,33 @@
-package com.example.speedcarv2
+package com.example.speedcarv2.ui
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.speedcarv2.databinding.ActivityViagemRealizadaBinding
+import com.example.speedcarv2.R
+import com.example.speedcarv2.databinding.ActivityDetalhesViagemBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class ViagemRealizadaActivity : AppCompatActivity() {
+class DetalhesViagemActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var binding: ActivityViagemRealizadaBinding
+    private lateinit var binding: ActivityDetalhesViagemBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityViagemRealizadaBinding.inflate(layoutInflater)
+        binding = ActivityDetalhesViagemBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnVoltarVGRL.setOnClickListener {
-            val homeActivity = Intent(this, HomeActivity::class.java);
-            startActivity(homeActivity)
+        binding.btnVoltarDVGS.setOnClickListener {
+            val viagensActivity = Intent(this, ViagensActivity::class.java);
+            startActivity(viagensActivity)
         }
 
-        binding.btnIniciarViagemVGRL.setOnClickListener {
-            val detalhesViagemActivity = Intent(this, DetalhesViagemActivity::class.java);
-            startActivity(detalhesViagemActivity)
+        binding.btnEditarViagemDVGS.setOnClickListener {
+            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java);
+            startActivity(edtViagemActivity)
         }
 
         // Menu Hamburguer
@@ -62,7 +63,7 @@ class ViagemRealizadaActivity : AppCompatActivity() {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this@ViagemRealizadaActivity, LoginActivity::class.java));
+        startActivity(Intent(this@DetalhesViagemActivity, LoginActivity::class.java));
         finish();
     }
 

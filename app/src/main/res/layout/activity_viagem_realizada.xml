@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
+    tools:context=".ui.HomeActivity"
     android:background="@color/corBackground"
     android:id="@+id/drawerLayout">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/corBackground"
-        tools:context=".ViagemRealizadaActivity">
+        tools:context=".ui.ViagemRealizadaActivity">
 
         <TextView
             android:id="@+id/txtMsgHome2"

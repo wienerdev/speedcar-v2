@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
+    tools:context=".ui.HomeActivity"
     android:background="@color/corBackground"
     android:id="@+id/drawerLayout">
 
@@ -74,7 +74,7 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtPreçoCRVG"
+            app:layout_constraintTop_toBottomOf="@+id/edtPrecoCRVG"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
@@ -84,7 +84,6 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_bg"
             android:hint="Nome do Passageiro"
-            android:inputType="number"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -100,7 +99,6 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_bg"
             android:hint="CPF do Passageiro"
-            android:inputType="number"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -116,7 +114,6 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_bg"
             android:hint="Telefone do Passageiro"
-            android:inputType="number"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -126,7 +123,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/edtPreçoCRVG"
+            android:id="@+id/edtPrecoCRVG"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

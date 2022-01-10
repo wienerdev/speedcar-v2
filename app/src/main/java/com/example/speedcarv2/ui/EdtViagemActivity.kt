@@ -95,7 +95,7 @@ class EdtViagemActivity : AppCompatActivity() {
         val viagemId = database.child(uid).push().key
 
         if (uid != null && viagemId != null) {
-            database.child(uid).child(viagemId).get().addOnSuccessListener {
+            database.child(viagemId).get().addOnSuccessListener {
 
                 val regiao = it.child("regiao").value
                 val origem = it.child("origem").value

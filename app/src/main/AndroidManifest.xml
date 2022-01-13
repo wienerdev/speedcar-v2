@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ui.RegInfoPessoalActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.EditAccountActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />

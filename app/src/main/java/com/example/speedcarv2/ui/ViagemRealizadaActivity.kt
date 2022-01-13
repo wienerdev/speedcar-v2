@@ -63,8 +63,8 @@ class ViagemRealizadaActivity : AppCompatActivity() {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this@ViagemRealizadaActivity, LoginActivity::class.java));
-        finish();
+        startActivity(Intent(this@ViagemRealizadaActivity, LoginActivity::class.java))
+        finish()
     }
 
     fun navigateToAccount() {

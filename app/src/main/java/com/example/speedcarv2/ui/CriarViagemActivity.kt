@@ -1,6 +1,8 @@
 package com.example.speedcarv2.ui
 
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -9,12 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.ActivityCriarViagemBinding
 import com.example.speedcarv2.model.ViagemModel
+import com.example.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 
 class CriarViagemActivity : AppCompatActivity() {
+
+    private val viewModel = MainViewModel()
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityCriarViagemBinding
@@ -44,8 +49,10 @@ class CriarViagemActivity : AppCompatActivity() {
 
                 R.id.viagens -> navigateToViagens()
 
-                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
-                    Toast.LENGTH_SHORT).show()
+                R.id.pagamentos -> viewModel.openNewTabWindow(
+                    "https://pagseguro.uol.com.br/#rmcl",
+                    this@CriarViagemActivity)
+
 
                 R.id.logout -> logout()
             }
@@ -83,8 +90,14 @@ class CriarViagemActivity : AppCompatActivity() {
                 }
             }
 
-            navigateToViagens()
+            viewModel.openNewTabWindow("https://www.google.com.br/maps/dir///@-15.8334976,-47.9133696,15z", this@CriarViagemActivity)
+
         }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        navigateToHome()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

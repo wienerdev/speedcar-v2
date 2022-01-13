@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.ActivityEditAccountBinding
 import com.example.speedcarv2.model.UserModel
+import com.example.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -17,6 +18,8 @@ import kotlinx.android.synthetic.main.account_activity.*
 import kotlinx.android.synthetic.main.activity_edit_account.*
 
 class EditAccountActivity : AppCompatActivity() {
+
+    private val viewModel = MainViewModel()
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityEditAccountBinding
@@ -47,8 +50,10 @@ class EditAccountActivity : AppCompatActivity() {
 
                 R.id.viagens -> navigateToViagens()
 
-                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
-                    Toast.LENGTH_SHORT).show()
+                R.id.pagamentos -> viewModel.openNewTabWindow(
+                    "https://pagseguro.uol.com.br/#rmcl",
+                    this@EditAccountActivity)
+
 
                 R.id.logout -> logout()
             }

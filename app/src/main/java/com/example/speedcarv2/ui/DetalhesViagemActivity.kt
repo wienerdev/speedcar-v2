@@ -8,9 +8,12 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.ActivityDetalhesViagemBinding
+import com.example.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class DetalhesViagemActivity : AppCompatActivity() {
+
+    private val viewModel = MainViewModel()
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityDetalhesViagemBinding
@@ -43,8 +46,9 @@ class DetalhesViagemActivity : AppCompatActivity() {
 
                 R.id.viagens -> navigateToViagens()
 
-                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
-                    Toast.LENGTH_SHORT).show()
+                R.id.pagamentos -> viewModel.openNewTabWindow(
+                    "https://pagseguro.uol.com.br/#rmcl",
+                    this@DetalhesViagemActivity)
 
                 R.id.logout -> logout()
             }

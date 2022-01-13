@@ -8,12 +8,15 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.AccountActivityBinding
+import com.example.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.account_activity.*
 
 class AccountActivity : AppCompatActivity() {
+
+    private val viewModel = MainViewModel()
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: AccountActivityBinding
@@ -44,8 +47,9 @@ class AccountActivity : AppCompatActivity() {
 
                 R.id.viagens -> navigateToViagens()
 
-                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
-                    Toast.LENGTH_SHORT).show()
+                R.id.pagamentos -> viewModel.openNewTabWindow(
+                    "https://pagseguro.uol.com.br/#rmcl",
+                    this@AccountActivity)
 
                 R.id.logout -> logout()
             }

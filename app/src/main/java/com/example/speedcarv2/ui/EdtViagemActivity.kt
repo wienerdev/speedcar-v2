@@ -1,21 +1,28 @@
 package com.example.speedcarv2.ui
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.ActivityEdtViagemBinding
+import com.example.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_criar_viagem.*
 import kotlinx.android.synthetic.main.activity_edit_account.*
 import kotlinx.android.synthetic.main.activity_edt_viagem.*
+import kotlinx.android.synthetic.main.activity_viagens.*
 
 class EdtViagemActivity : AppCompatActivity() {
+
+    private val viewModel = MainViewModel()
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityEdtViagemBinding
@@ -28,12 +35,18 @@ class EdtViagemActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (uid != null) {
-            readViagemData(uid)
+            readData()
         }
 
         binding.btnCancelarEDVG.setOnClickListener {
             val viagensActivity = Intent(this, ViagensActivity::class.java);
             startActivity(viagensActivity)
+        }
+
+        binding.btnIniciarViagemEDVG.setOnClickListener {
+            viewModel.openNewTabWindow(
+                "https://www.google.com.br/maps/dir///@-15.8334976,-47.9133696,15z",
+                this@EdtViagemActivity) // Kotlin version of getContext()
         }
 
         // Menu Hamburguer
@@ -51,13 +64,18 @@ class EdtViagemActivity : AppCompatActivity() {
 
                 R.id.viagens -> navigateToViagens()
 
-                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
-                    Toast.LENGTH_SHORT).show()
+                R.id.pagamentos -> viewModel.openNewTabWindow("https://pagseguro.uol.com.br/#rmcl", this@EdtViagemActivity)
+
 
                 R.id.logout -> logout()
             }
             true
         }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        navigateToHome()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -90,34 +108,41 @@ class EdtViagemActivity : AppCompatActivity() {
         startActivity(viagensActivity)
     }
 
-    fun readViagemData(uid: String) {
-        database = FirebaseDatabase.getInstance().getReference("Trips")
-        val viagemId = database.child(uid).push().key
+    fun readData() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        val rootRef = FirebaseDatabase.getInstance().reference
+        val viagemRef = uid?.let { rootRef.child("Trips").child(it) }
 
-        if (uid != null && viagemId != null) {
-            database.child(viagemId).get().addOnSuccessListener {
+        val valueEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (ds in dataSnapshot.children) {
+                    val regiao = ds.child("regiao").getValue(String::class.java)
+                    val origem = ds.child("origem").getValue(String::class.java)
+                    val destino = ds.child("destino").getValue(String::class.java)
+                    val preco = ds.child("preco").getValue(String::class.java)
+                    val tempoMedio = ds.child("tempoMedio").getValue(String::class.java)
+                    val nomePassageiro = ds.child("nomePassageiro").getValue(String::class.java)
+                    val cpfPassageiro = ds.child("cpfPassageiro").getValue(String::class.java)
+                    val telefonePassageiro = ds.child("telefonePassageiro").getValue(String::class.java)
 
-                val regiao = it.child("regiao").value
-                val origem = it.child("origem").value
-                val destino = it.child("destino").value
-                val preco = it.child("preco").value
-                val tempoMedio = it.child("tempoMedio").value
-                val nomePassageiro = it.child("nomePassageiro").value
-                val cpfPassageiro = it.child("cpfPassageiro").value
-                val telefonePassageiro = it.child("telefonePassageiro").value
-
-                edtRegiaoEDVG.setText(regiao.toString())
-                edtOrigemEDVG.setText(origem.toString())
-                edtDestinoEDVG.setText(destino.toString())
-                edtPreçoEDVG.setText(preco.toString())
-                edtTempoMedioEDVG.setText(tempoMedio.toString())
-                edtNomePassageiroEDVG.setText(nomePassageiro.toString())
-                edtCpfPassageiroEDVG.setText(cpfPassageiro.toString())
-                edtTelefonePassageiroEDVG.setText(telefonePassageiro.toString())
-
+                    edtRegiaoEDVG.setText(regiao.toString())
+                    edtOrigemEDVG.setText(origem.toString())
+                    edtDestinoEDVG.setText(destino.toString())
+                    edtPrecoEDVG.setText(preco.toString())
+                    edtTempoMedioEDVG.setText(tempoMedio.toString())
+                    edtNomePassageiroEDVG.setText(nomePassageiro.toString())
+                    edtCpfPassageiroEDVG.setText(cpfPassageiro.toString())
+                    edtTelefonePassageiroEDVG.setText(telefonePassageiro.toString())
+                }
             }
-        } else {
-            Toast.makeText(this, "Viagem não encontrada!", Toast.LENGTH_SHORT).show()
+
+            @SuppressLint("LongLogTag")
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("Desculpe, erro no sistema", databaseError.getMessage())
+            }
+        }
+        if (viagemRef != null) {
+            viagemRef.addListenerForSingleValueEvent(valueEventListener)
         }
     }
 }

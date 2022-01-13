@@ -26,7 +26,7 @@
         android:backgroundTint="@color/white"
         android:bottomLeftRadius="100dp"
         android:bottomRightRadius="100dp"
-        android:text="COMEÇE AGORA!"
+        android:text="CONTINUAR"
         android:textColor="#FF89A2"
         android:topLeftRadius="100dp"
         android:topRightRadius="100dp"

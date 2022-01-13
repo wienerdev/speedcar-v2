@@ -10,12 +10,15 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.ActivityViagensBinding
+import com.example.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.account_activity.*
 import kotlinx.android.synthetic.main.activity_viagens.*
 
 class ViagensActivity : AppCompatActivity() {
+
+    private val viewModel = MainViewModel()
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityViagensBinding
@@ -33,12 +36,12 @@ class ViagensActivity : AppCompatActivity() {
         }
 
         binding.btnCriarViagemVGS.setOnClickListener {
-            val criarViagemActivity = Intent(this, CriarViagemActivity::class.java);
+            val criarViagemActivity = Intent(this, CriarViagemActivity::class.java)
             startActivity(criarViagemActivity)
         }
 
         binding.btnEditarViagemVGS.setOnClickListener {
-            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java);
+            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java)
             startActivity(edtViagemActivity)
         }
 
@@ -57,8 +60,9 @@ class ViagensActivity : AppCompatActivity() {
 
                 R.id.viagens -> navigateToViagens()
 
-                R.id.pagamentos -> Toast.makeText(applicationContext, "Clicou em Pagamentos",
-                    Toast.LENGTH_SHORT).show()
+                R.id.pagamentos -> viewModel.openNewTabWindow("https://pagseguro.uol.com.br/#rmcl",
+                    this@ViagensActivity)
+
 
                 R.id.logout -> logout()
             }

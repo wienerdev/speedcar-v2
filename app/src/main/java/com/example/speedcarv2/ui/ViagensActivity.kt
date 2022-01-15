@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.speedcarv2.R
 import com.example.speedcarv2.databinding.ActivityViagensBinding
+import com.example.speedcarv2.model.ViagemModel
+import com.example.speedcarv2.utils.ViagemAdapter
 import com.example.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -19,8 +22,9 @@ import kotlinx.android.synthetic.main.activity_viagens.*
 class ViagensActivity : AppCompatActivity() {
 
     private val viewModel = MainViewModel()
-
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var viagemRecyclerView: RecyclerView
+    private lateinit var viagemList: ArrayList<ViagemModel>
     private lateinit var binding: ActivityViagensBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,10 @@ class ViagensActivity : AppCompatActivity() {
         binding = ActivityViagensBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.lvViagens.layoutManager = LinearLayoutManager(this)
+        binding.lvViagens.setHasFixedSize(true)
+
+        viagemList = arrayListOf<ViagemModel>()
         readData()
 
         binding.btnVoltarVGS.setOnClickListener {
@@ -40,10 +48,10 @@ class ViagensActivity : AppCompatActivity() {
             startActivity(criarViagemActivity)
         }
 
-        binding.btnEditarViagemVGS.setOnClickListener {
-            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java)
-            startActivity(edtViagemActivity)
-        }
+//        binding.btnEditarViagemVGS.setOnClickListener {
+//            val edtViagemActivity = Intent(this, EdtViagemActivity::class.java)
+//            startActivity(edtViagemActivity)
+//        }
 
         // Menu Hamburguer
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
@@ -108,19 +116,30 @@ class ViagensActivity : AppCompatActivity() {
 
         val valueEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (ds in dataSnapshot.children) {
-                    val regiao = ds.child("regiao").getValue(String::class.java)
-                    val origem = ds.child("origem").getValue(String::class.java)
-                    val destino = ds.child("destino").getValue(String::class.java)
-                    val preco = ds.child("preco").getValue(String::class.java)
-                    val tempoMedio = ds.child("tempoMedio").getValue(String::class.java)
 
-                    txtRegiaoViagemVG.text = regiao.toString()
-                    txtOrigemViagemVG.text = origem.toString()
-                    txtDestinoViagemVG.text = destino.toString()
-                    txtPrecoVG.text = "R$" + preco.toString()
-                    txtTempoViagemVG.text = tempoMedio.toString() + " minutos"
+                if (dataSnapshot.exists()) {
+                    for (viagemSnapshot in dataSnapshot.children) {
+
+                        val viagem = viagemSnapshot.getValue(ViagemModel::class.java)
+                        viagemList.add(viagem!!)
+
+                        binding.lvViagens.adapter = ViagemAdapter(viagemList)
+
+//                        val regiao = viagemSnapshot.child("regiao").getValue(String::class.java)
+//                        val origem = viagemSnapshot.child("origem").getValue(String::class.java)
+//                        val destino = viagemSnapshot.child("destino").getValue(String::class.java)
+//                        val preco = viagemSnapshot.child("preco").getValue(String::class.java)
+//                        val tempoMedio = viagemSnapshot.child("tempoMedio").getValue(String::class.java)
+//
+//                        txtRegiaoViagemVG.text = regiao.toString()
+//                        txtOrigemViagemVG.text = origem.toString()
+//                        txtDestinoViagemVG.text = destino.toString()
+//                        txtPrecoVG.text = "R$" + preco.toString()
+//                        txtTempoViagemVG.text = tempoMedio.toString() + " minutos"
+                    }
                 }
+
+
             }
 
             @SuppressLint("LongLogTag")

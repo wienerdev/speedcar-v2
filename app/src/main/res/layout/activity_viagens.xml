@@ -24,151 +24,21 @@
             android:textSize="23dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.136"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.099" />
+            app:layout_constraintVertical_bias="0.063" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ConstraintLayout5"
-            android:layout_width="335dp"
-            android:layout_height="200dp"
-            android:background="@drawable/layout_card_relatorio_viagem"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtMsgHome2"
-            app:layout_constraintVertical_bias="0.07">
-
-            <TextView
-                android:id="@+id/txtRegiaoViagemVG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Zona Sul"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.101"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Tempo médio:"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.113"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemVG3"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/txtTempoViagemVG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_light"
-                android:text="30 minutos"
-                android:textColor="#000000"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.055"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/txtDestinoViagemVG"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/txtOrigemViagemVG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Copacabana"
-                android:textColor="#9695A8"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.408"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRegiaoViagemVG" />
-
-            <TextView
-                android:id="@+id/txtOrigemViagemVG2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Origem:"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toStartOf="@+id/txtOrigemViagemVG"
-                app:layout_constraintHorizontal_bias="0.692"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRegiaoViagemVG" />
-
-            <TextView
-                android:id="@+id/txtDestinoViagemVG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Ipanema"
-                android:textColor="#9695A8"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.364"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemVG" />
-
-            <TextView
-                android:id="@+id/txtOrigemViagemVG3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Destino:"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toStartOf="@+id/txtDestinoViagemVG"
-                app:layout_constraintHorizontal_bias="0.684"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemVG2" />
-
-            <TextView
-                android:id="@+id/txtPrecoVG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="R$10,00"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.908"
-                app:layout_constraintStart_toEndOf="@+id/txtRegiaoViagemVG"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btnEditarViagemVGS"
-                android:layout_width="25dp"
-                android:layout_height="24dp"
-                android:background="@drawable/icon_edit_viagem"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.816"
-                app:layout_constraintStart_toEndOf="@+id/txtTempoViagemVG"
-                app:layout_constraintTop_toBottomOf="@+id/txtPrecoVG"
-                app:layout_constraintVertical_bias="0.754" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="90dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="120dp"
+            android:id="@+id/lvViagens"
+            tools:listitem="@layout/viagem_card"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="15.0sp"/>
 
         <Button
             android:id="@+id/btnCriarViagemVGS"
@@ -184,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.87"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ConstraintLayout5"
+            app:layout_constraintTop_toBottomOf="@+id/lvViagens"
             app:layout_constraintVertical_bias="0.966"
             app:layout_constraintWidth_percent=".8" />
 
@@ -202,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.116"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ConstraintLayout5"
+            app:layout_constraintTop_toBottomOf="@+id/lvViagens"
             app:layout_constraintVertical_bias="0.966"
             app:layout_constraintWidth_percent=".8" />
 

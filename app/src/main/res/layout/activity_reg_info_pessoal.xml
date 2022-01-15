@@ -25,7 +25,189 @@
             app:layout_constraintHorizontal_bias="0.32"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.038" />
+            app:layout_constraintVertical_bias="0.028" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtNomeCompletoRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtNomeCompletoRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txNomeRGIP"
+                android:inputType="text"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtDtNascimentoRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoRGIP"
+            app:layout_constraintLeft_toLeftOf="parent"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtDtNascimentoRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txDtNascimentoRGIP"
+                android:inputType="text"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtCpfRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoRGIP"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtCpfRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txCpfRGIP"
+                android:inputType="number"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtTelefoneRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtDtNascimentoRGIP">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtTelefoneRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txTelefoneRGIP"
+                android:inputType="phone"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtEnderecoRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtTelefoneRGIP">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEnderecoRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txEnderecoRGIP"
+                android:inputType="text"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtModeloVeiculoRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtEnderecoRGIP">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtModeloVeiculoRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txModeloVeiculoRGIP"
+                android:inputType="text"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtCorVeiculoRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtModeloVeiculoRGIP">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtCorVeiculoRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txCorVeiculoRGIP"
+                android:inputType="text"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtPlacaVeiculoRGIP"
+            theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtModeloVeiculoRGIP">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPlacaVeiculoRGIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/txPlacaVeiculoRGIP"
+                android:inputType="text"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSalvarRGIP"
@@ -41,131 +223,8 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtCorVeiculoEdtRGIP"
-            app:layout_constraintVertical_bias="0.925"
             app:layout_constraintWidth_percent=".8" />
 
-        <EditText
-            android:id="@+id/edtCorVeiculoEdtRGIP"
-            android:layout_width="329dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Cor do Veículo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtPlacaVeiculoEdtRGIP"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtPlacaVeiculoEdtRGIP"
-            android:layout_width="329dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Placa do Veículo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtModeloVeiculoEdtRGIP"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtModeloVeiculoEdtRGIP"
-            android:layout_width="329dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Modelo do Veículo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEnderecoEdtRGIP"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtEnderecoEdtRGIP"
-            android:layout_width="329dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Endereço"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtTelefoneEdtRGIP"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtTelefoneEdtRGIP"
-            android:layout_width="329dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Telefone"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtCpfEdtRGIP"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtCpfEdtRGIP"
-            android:layout_width="163dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="CPF"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.85"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoEdtRGIP"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtDtNascimentoEdtRGIP"
-            android:layout_width="163dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="31/07/1975"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.165"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtNomeCompletoEdtRGIP"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/edtNomeCompletoEdtRGIP"
-            android:layout_width="329dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Nome Completo"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtMsgHome3"
-            app:layout_constraintWidth_percent=".8" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

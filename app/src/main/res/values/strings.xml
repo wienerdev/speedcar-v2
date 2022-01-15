@@ -2,4 +2,13 @@
     <string name="app_name"></string>
     <string name="open">Aberto</string>
     <string name="close">Fechado</string>
+    <string name="required">*Campo Obrigatório</string>
+    <string name="txNomeRGIP">Nome Completo</string>
+    <string name="txDtNascimentoRGIP">Data de Nascimento</string>
+    <string name="txCpfRGIP">CPF</string>
+    <string name="txTelefoneRGIP">Telefone</string>
+    <string name="txModeloVeiculoRGIP">Modelo do Veículo</string>
+    <string name="txCorVeiculoRGIP">Cor do Veículo</string>
+    <string name="txPlacaVeiculoRGIP">Placa do Veículo</string>
+    <string name="txEnderecoRGIP">Endereço</string>
 </resources>

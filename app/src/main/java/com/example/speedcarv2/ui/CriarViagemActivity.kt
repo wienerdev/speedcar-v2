@@ -90,8 +90,11 @@ class CriarViagemActivity : AppCompatActivity() {
                 }
             }
 
-            viewModel.openNewTabWindow("https://www.google.com.br/maps/dir///@-15.8334976,-47.9133696,15z", this@CriarViagemActivity)
-
+            val gmmIntentUri =
+                Uri.parse("geo:0,0?q=$destino")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
         }
     }
 

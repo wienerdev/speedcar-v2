@@ -28,7 +28,7 @@
             android:fontFamily="@font/lobster"
             android:text="Bem vindo(a) de volta!"
             android:textColor="#FF5F5F"
-            android:textSize="75px"
+            android:textSize="35dp"
             app:layout_constraintBottom_toTopOf="@+id/edtEmailLG"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"

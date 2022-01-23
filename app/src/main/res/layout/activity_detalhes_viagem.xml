@@ -75,7 +75,7 @@
             app:layout_constraintVertical_bias="0.07">
 
             <TextView
-                android:id="@+id/txtRegiaoViagemVG"
+                android:id="@+id/txtRegiaoViagemHM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
@@ -105,7 +105,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/txtTempoViagemVG"
+                android:id="@+id/txtTempoViagemHM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -117,11 +117,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.055"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/txtDestinoViagemVG"
+                app:layout_constraintTop_toBottomOf="@+id/txtDestinoViagemHM"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/txtOrigemViagemVG"
+                android:id="@+id/txtOrigemViagemHM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -132,7 +132,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.408"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRegiaoViagemVG" />
+                app:layout_constraintTop_toBottomOf="@+id/txtRegiaoViagemHM" />
 
             <TextView
                 android:id="@+id/txtOrigemViagemVG2"
@@ -143,13 +143,13 @@
                 android:text="Origem:"
                 android:textColor="@color/black"
                 android:textSize="14dp"
-                app:layout_constraintEnd_toStartOf="@+id/txtOrigemViagemVG"
+                app:layout_constraintEnd_toStartOf="@+id/txtOrigemViagemHM"
                 app:layout_constraintHorizontal_bias="0.692"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRegiaoViagemVG" />
+                app:layout_constraintTop_toBottomOf="@+id/txtRegiaoViagemHM" />
 
             <TextView
-                android:id="@+id/txtDestinoViagemVG"
+                android:id="@+id/txtDestinoViagemHM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -160,7 +160,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.364"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemVG" />
+                app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemHM" />
 
             <TextView
                 android:id="@+id/txtOrigemViagemVG3"
@@ -171,13 +171,13 @@
                 android:text="Destino:"
                 android:textColor="@color/black"
                 android:textSize="14dp"
-                app:layout_constraintEnd_toStartOf="@+id/txtDestinoViagemVG"
+                app:layout_constraintEnd_toStartOf="@+id/txtDestinoViagemHM"
                 app:layout_constraintHorizontal_bias="0.684"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemVG2" />
 
             <TextView
-                android:id="@+id/txtPrecoVG"
+                android:id="@+id/txtPrecoHM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -187,7 +187,7 @@
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.908"
-                app:layout_constraintStart_toEndOf="@+id/txtRegiaoViagemVG"
+                app:layout_constraintStart_toEndOf="@+id/txtRegiaoViagemHM"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
@@ -198,8 +198,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.816"
-                app:layout_constraintStart_toEndOf="@+id/txtTempoViagemVG"
-                app:layout_constraintTop_toBottomOf="@+id/txtPrecoVG"
+                app:layout_constraintStart_toEndOf="@+id/txtTempoViagemHM"
+                app:layout_constraintTop_toBottomOf="@+id/txtPrecoHM"
                 app:layout_constraintVertical_bias="0.754" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

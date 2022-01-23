@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.speedcarv2">
+    package="com.preko.speedcarv2" >
 
     <application
         android:allowBackup="true"
@@ -8,51 +8,55 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
-            android:name=".ui.RegInfoPessoalActivity"
+            android:name="com.preko.speedcarv2.ui.PagamentoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light"/>
+        <activity
+            android:name="com.preko.speedcarv2.ui.RegInfoPessoalActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.EditAccountActivity"
+            android:name="com.preko.speedcarv2.ui.EditAccountActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.CriarViagemActivity"
+            android:name="com.preko.speedcarv2.ui.CriarViagemActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.DetalhesViagemActivity"
+            android:name="com.preko.speedcarv2.ui.DetalhesViagemActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.EdtViagemActivity"
+            android:name="com.preko.speedcarv2.ui.EdtViagemActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.ViagensActivity"
+            android:name="com.preko.speedcarv2.ui.ViagensActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.ViagemRealizadaActivity"
+            android:name="com.preko.speedcarv2.ui.ViagemRealizadaActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.AccountActivity"
+            android:name="com.preko.speedcarv2.ui.AccountActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.HomeActivity"
+            android:name="com.preko.speedcarv2.ui.HomeActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".ui.SignInActivity"
+            android:name="com.preko.speedcarv2.ui.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="com.preko.speedcarv2.ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
+            android:name="com.preko.speedcarv2.ui.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,6 +67,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
     </application>
 
 </manifest>

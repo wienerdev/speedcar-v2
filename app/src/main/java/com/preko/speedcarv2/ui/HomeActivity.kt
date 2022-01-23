@@ -1,26 +1,45 @@
 package com.preko.speedcarv2.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.preko.speedcarv2.R
 import com.preko.speedcarv2.databinding.ActivityHomeBinding
 import com.preko.speedcarv2.viewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.preko.speedcarv2.utils.HomeAdapter
+import com.preko.speedcarv2.utils.ViagemAdapter
 
 class HomeActivity : AppCompatActivity() {
 
     private val viewModel = MainViewModel()
 
+    var viagemList: ArrayList<com.preko.speedcarv2.model.ViagemModel> = arrayListOf<com.preko.speedcarv2.model.ViagemModel>()
+
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityHomeBinding
+
+    val uid = FirebaseAuth.getInstance().currentUser?.uid
+    val rootRef = FirebaseDatabase.getInstance().reference
+    val viagemRef = uid?.let { rootRef.child("Trips").child(it) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.lvViagensHM.layoutManager = LinearLayoutManager(this)
+        binding.lvViagensHM.setHasFixedSize(true)
+        readData()
 
         binding.btnContaHM.setOnClickListener {
             navigateToAccount()
@@ -37,14 +56,6 @@ class HomeActivity : AppCompatActivity() {
         binding.btnCriarViagemHM.setOnClickListener {
             val criarViagemActivity = Intent(this, CriarViagemActivity::class.java)
             startActivity(criarViagemActivity)
-        }
-
-        binding.btnDetalhesHM.setOnClickListener {
-            navigateViagemRealizada()
-        }
-
-        binding.btnDetalhesHM2.setOnClickListener {
-            navigateViagemRealizada()
         }
 
         // Menu Hamburguer
@@ -69,6 +80,35 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
+    }
+
+    fun readData() {
+        val valueEventListener = object : ValueEventListener, HomeAdapter(viagemList) {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    for (viagemSnapshot in dataSnapshot.children) {
+
+                        val viagem = viagemSnapshot.getValue(com.preko.speedcarv2.model.ViagemModel::class.java)
+
+                        viagemList.add(viagem!!)
+
+                        binding.lvViagensHM.adapter = HomeAdapter(viagemList)
+
+                    }
+                }
+
+            }
+
+            @SuppressLint("LongLogTag")
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("Desculpe, erro no sistema", databaseError.getMessage())
+            }
+
+        }
+        if (viagemRef != null) {
+            viagemRef.addListenerForSingleValueEvent(valueEventListener)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -110,4 +150,6 @@ class HomeActivity : AppCompatActivity() {
         val viagemRealizadaActivity = Intent(this, ViagemRealizadaActivity::class.java)
         startActivity(viagemRealizadaActivity)
     }
+
+
 }

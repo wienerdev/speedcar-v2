@@ -123,6 +123,21 @@
         app:layout_constraintTop_toBottomOf="@+id/txtCategorias"
         app:layout_constraintVertical_bias="0.239" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lvViagensHM"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginHorizontal="20dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15.0sp"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViagensRec"
+        app:layout_constraintVertical_bias="0.184"
+        tools:listitem="@layout/viagem_card_home" />
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="wrap_content"
@@ -142,243 +157,6 @@
             app:srcCompat="@drawable/ic_baseline_add_24" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="143dp"
-        android:layout_height="240dp"
-        android:background="@drawable/layout_card_viagens"
-        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/txtViagensRec"
-        app:layout_constraintVertical_bias="0.367">
-
-
-        <TextView
-            android:id="@+id/txtRegiaoViagemHM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Zona Sul"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtOrigemViagemHM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Origem: Grajaú"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtDestinoViagemHM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Destino: Tijuca"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemHM" />
-
-        <TextView
-            android:id="@+id/txtPassageirosHM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Passageiros: 5"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDestinoViagemHM" />
-
-        <TextView
-            android:id="@+id/txtTempoViagemHM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Tempo: 47 minutos"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPassageirosHM" />
-
-        <TextView
-            android:id="@+id/txtValorViagemHM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Valor: R$10,00"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTempoViagemHM" />
-
-        <Button
-            android:id="@+id/btnDetalhesHM"
-            android:layout_width="83dp"
-            android:layout_height="30dp"
-            android:background="@drawable/button_detalhes_viagens"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Detalhes"
-            android:textColor="@color/white"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtValorViagemHM" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="143dp"
-        android:layout_height="240dp"
-        android:background="@drawable/layout_card_viagens"
-        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtViagensRec"
-        app:layout_constraintVertical_bias="0.367">
-
-
-        <TextView
-            android:id="@+id/txtRegiaoViagem2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Zona Sul"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtOrigemViagem2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Origem: Grajaú"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtDestinoViagem2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Destino: Tijuca"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagem2" />
-
-        <TextView
-            android:id="@+id/txtPassageiros2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Passageiros: 5"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDestinoViagem2" />
-
-        <TextView
-            android:id="@+id/txtTempoViagem2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Tempo: 47 minutos"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPassageiros2" />
-
-        <TextView
-            android:id="@+id/txtValorViagem2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
-            android:text="Valor: R$10,00"
-            android:textColor="@color/white"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTempoViagem2" />
-
-        <Button
-            android:id="@+id/btnDetalhesHM2"
-            android:layout_width="83dp"
-            android:layout_height="30dp"
-            android:background="@drawable/button_detalhes_viagens"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Detalhes"
-            android:textColor="@color/white"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtValorViagem2" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

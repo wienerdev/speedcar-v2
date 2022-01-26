@@ -3,105 +3,37 @@ package com.preko.speedcarv2.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-//import com.android.billingclient.api.*
+import com.anjlab.android.iab.v3.BillingProcessor
+import com.anjlab.android.iab.v3.PurchaseInfo
+import com.google.firebase.auth.FirebaseAuth
 import com.preko.speedcarv2.R
 import com.preko.speedcarv2.databinding.ActivityPagamentoBinding
-import com.google.firebase.auth.FirebaseAuth
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.withContext
+import kotlinx.android.synthetic.main.activity_pagamento.*
 
-
-class PagamentoActivity : AppCompatActivity() {
+class PagamentoActivity : AppCompatActivity(), BillingProcessor.IBillingHandler {
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityPagamentoBinding
 
-//    private val purchasesUpdatedListener =
-//        PurchasesUpdatedListener { billingResult, purchases ->
-//            // To be implemented in a later section.
-//        }
-//
-//    private var billingClient = BillingClient.newBuilder(this@PagamentoActivity)
-//        .setListener(purchasesUpdatedListener)
-//        .enablePendingPurchases()
-//        .build()
-//
-//    // Purchase retrieved from BillingClient#queryPurchasesAsync or your PurchasesUpdatedListener.
-//    val purchase : PurchasesUpdatedListener = purchasesUpdatedListener
-//    val client: BillingClient = billingClient
-//    val acknowledgePurchaseResponseListener: AcknowledgePurchaseResponseListener =
-
+    private lateinit var bp: BillingProcessor
+    private lateinit var purchaseInfo: PurchaseInfo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPagamentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        billingClient.startConnection(object : BillingClientStateListener {
-//            override fun onBillingSetupFinished(billingResult: BillingResult) {
-//                if (billingResult.responseCode ==  BillingClient.BillingResponseCode.OK) {
-//                    // The BillingClient is ready. You can query purchases here.
-//                }
-//            }
-//            override fun onBillingServiceDisconnected() {
-//                // Try to restart the connection on the next request to
-//                // Google Play by calling the startConnection() method.
-//            }
-//        })
-//
-//        suspend fun querySkuDetails() {
-//            val skuList = ArrayList<String>()
-//            skuList.add("premium_upgrade")
-//            skuList.add("gas")
-//            val params = SkuDetailsParams.newBuilder()
-//            params.setSkusList(skuList).setType(BillingClient.SkuType.SUBS)
-//
-//            // leverage querySkuDetails Kotlin extension function
-//            val skuDetailsResult = withContext(Dispatchers.IO) {
-//                billingClient.querySkuDetails(params.build())
-//            }
-//
-//            // Process the result.
-//        }
-//
-//        suspend fun handlePurchase(purchase: Purchase) {
-//            // Verify the purchase.
-//            // Ensure entitlement was not already granted for this purchaseToken.
-//            // Grant entitlement to the user.
-//
-//            val consumeParams =
-//                ConsumeParams.newBuilder()
-//                    .setPurchaseToken(purchase.toString())
-//                    .build()
-//            val consumeResult = withContext(Dispatchers.IO) {
-//                client.consumePurchase(consumeParams)
-//            }
-//        }
-//
-//        suspend fun handlePurchase() {
-//            if (purchase.purchaseState === Purchase.PurchaseState.PURCHASED) {
-//                if (!purchase.isAcknowledged) {
-//                    val acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
-//                        .setPurchaseToken(purchase.purchaseToken)
-//                    val ackPurchaseResult = withContext(Dispatchers.IO) {
-//                        client.acknowledgePurchase(acknowledgePurchaseParams.build())
-//                    }
-//                }
-//            }
-//        }
+        bp = BillingProcessor(this,
+            "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmYoQjaGSzUXsAFjQn4mp3B8e+woMWqZGi5p92pLBy94v5ACFf78ofLF45e0/w+Upx3JmAHaShcBbkLelKnabQwTxjKHhnzMJQH9iSfVZ3WPwN03jCXnwLblCL7Cc0R/VaQngfaakfjNomjPolddXGIdwCwmxCNXsbTGQMpsYOgdLvdmvRy1UUZ75t+vNDZvWJKhjkDIzB57bk9s4SkcHPnMeS37dnMubs5Ii/n0NRIPAEWzF4dyh40ZJwX+crhELefBh4vpb8Yc1R355jha7toIf8WSUo3TLrjQkGlh8XQadFr1jMGzDciRm7CTg7HNXtZ/eLxXMdn+IxCSUMaVmDQIDAQAB",
+            this)
+        bp.initialize()
 
         binding.btnComprarPG.setOnClickListener {
 
-//            // An activity reference from which the billing flow will be launched.
-//            val activity : Activity = this@PagamentoActivity;
-//
-//            // Retrieve a value for "skuDetails" by calling querySkuDetailsAsync().
-//            val flowParams = BillingFlowParams.newBuilder()
-//                .setSkuDetails(skuDetailsResult)
-//                .build()
-//            val responseCode = billingClient.launchBillingFlow(activity, flowParams).responseCode
+            bp.subscribe(this, "plano_mensal_vem_comigo")
         }
 
         binding.btnVoltarPG.setOnClickListener {
@@ -167,17 +99,55 @@ class PagamentoActivity : AppCompatActivity() {
         startActivity(homeActivity)
     }
 
-//    fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Purchase>?) {
-//        if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
-//            for (purchase in purchases) {
-//                handlePurchase(purchase)
-//            }
-//        } else if (billingResult.responseCode == BillingClient.BillingResponseCode.USER_CANCELED) {
-//            // Handle an error caused by a user cancelling the purchase flow.
-//        } else {
-//            // Handle any other error codes.
-//        }
-//    }
+    override fun onProductPurchased(productId: String, details: PurchaseInfo?) {
+        Toast.makeText(this, "Compra efetuada com sucesso!", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPurchaseHistoryRestored() {
+//        TODO("Not yet implemented")
+    }
+
+    override fun onBillingError(errorCode: Int, error: Throwable?) {
+//        TODO("Not yet implemented")
+    }
+
+    override fun onBillingInitialized() {
+//        TODO("Not yet implemented")
+
+        bp.loadOwnedPurchasesFromGoogleAsync(object : BillingProcessor.IPurchasesResponseListener{
+            override fun onPurchasesSuccess() {
+                TODO("Not yet implemented")
+            }
+
+            override fun onPurchasesError() {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+        if (bp.getSubscriptionPurchaseInfo("plano_mensal_vem_comigo") != null) {
+
+            purchaseInfo = bp.getSubscriptionPurchaseInfo("plano_mensal_vem_comigo")!!
+
+            if (purchaseInfo != null) {
+                if (purchaseInfo.purchaseData.autoRenewing) {
+                    Toast.makeText(this, "Você já é um assinante!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Você não é um assinante!", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Assinatura vencida!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+    override fun onDestroy() {
+        if (bp != null) {
+            bp.release()
+        }
+        super.onDestroy()
+    }
 
 
 }

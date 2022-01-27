@@ -1,6 +1,7 @@
 package com.preko.speedcarv2.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -25,6 +26,11 @@ class PagamentoActivity : AppCompatActivity(), BillingProcessor.IBillingHandler 
         super.onCreate(savedInstanceState)
         binding = ActivityPagamentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.tvTextoPagamentoPG5.setOnClickListener {
+            val googlePlay = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/intl/ALL_br/about/giftcards/#where-to-buy"))
+            startActivity(googlePlay)
+        }
 
         bp = BillingProcessor(this,
             "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmYoQjaGSzUXsAFjQn4mp3B8e+woMWqZGi5p92pLBy94v5ACFf78ofLF45e0/w+Upx3JmAHaShcBbkLelKnabQwTxjKHhnzMJQH9iSfVZ3WPwN03jCXnwLblCL7Cc0R/VaQngfaakfjNomjPolddXGIdwCwmxCNXsbTGQMpsYOgdLvdmvRy1UUZ75t+vNDZvWJKhjkDIzB57bk9s4SkcHPnMeS37dnMubs5Ii/n0NRIPAEWzF4dyh40ZJwX+crhELefBh4vpb8Yc1R355jha7toIf8WSUo3TLrjQkGlh8XQadFr1jMGzDciRm7CTg7HNXtZ/eLxXMdn+IxCSUMaVmDQIDAQAB",

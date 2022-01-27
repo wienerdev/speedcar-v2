@@ -16,6 +16,5 @@
     <string name="txPagamentoPG2">Você pode transferir para seu saldo através do Mercado Pago, no qual permite transferência bancária,
     PIX, boleto bancário, Casas Lotéricas ou cartão de débito virtual da Caixa.</string>
     <string name="txPagamentoPG3">Também é possível comprar gift cards do Google Play disponíveis na maioria dos mercados e
-    lojas virtuais e físicas, <a href="https://play.google.com/intl/ALL_br/about/giftcards/#where-to-buy">clique aqui</a> para
-        conferir a revendedora mais próxima.</string>
+    lojas virtuais e físicas.</string>
 </resources>

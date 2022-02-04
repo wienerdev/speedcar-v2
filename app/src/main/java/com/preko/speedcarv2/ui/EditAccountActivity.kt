@@ -59,20 +59,15 @@ class EditAccountActivity : AppCompatActivity() {
         // Persistência dos dados
         binding.btnSalvarInfoEdtIP.setOnClickListener {
 
-            val nomeCompleto = binding.edtNomeCompletoEdtIP.text.toString()
-            val dtNascimento = binding.edtDtNascimentoEdtIP.text.toString()
-            val cpf = binding.edtCpfEdtIP.text.toString()
             val telefone = binding.edtTelefoneEdtIP.text.toString()
             val endereco = binding.edtEnderecoEdtIP.text.toString()
             val modeloVeiculo = binding.edtModeloVeiculoEdtIP.text.toString()
             val placaVeiculo = binding.edtPlacaVeiculoEdtIP.text.toString()
             val corVeiculo = binding.edtCorVeiculoEdtIP.text.toString()
-            val email = binding.edtEmailEdtIP.text.toString()
 
             val user = com.preko.speedcarv2.model.UserModel(
-                nomeCompleto, dtNascimento, cpf,
                 telefone, endereco, modeloVeiculo,
-                corVeiculo, placaVeiculo, email
+                corVeiculo, placaVeiculo
             )
 
             val uid = FirebaseAuth.getInstance().currentUser?.uid

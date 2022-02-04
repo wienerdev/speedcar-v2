@@ -9,14 +9,14 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="300dp"
-        android:layout_height="190dp"
-        android:layout_marginTop="232dp"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="224dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/speedcar_logo" />
+        app:srcCompat="@drawable/likeacar_logo" />
 
     <Button
         android:id="@+id/btnComecar"

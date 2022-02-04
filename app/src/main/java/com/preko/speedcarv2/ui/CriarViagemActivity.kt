@@ -87,9 +87,9 @@ class CriarViagemActivity : AppCompatActivity() {
                 }
             }
 
-            val gmmIntentUri =
-                Uri.parse("geo:0,0?q=$destino")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            val mapIntent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://www.google.com/maps/dir/?api=1&destination=$destino"))
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }

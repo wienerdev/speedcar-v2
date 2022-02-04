@@ -21,6 +21,10 @@ class LoginActivity : AppCompatActivity() {
             navigateSignIn()
         }
 
+        binding.btnForgetPassLG.setOnClickListener {
+            naviageToRecSenha()
+        }
+
         binding.btnLoginLG.setOnClickListener {
             when {
                 TextUtils.isEmpty(binding.edtEmailLG.text.toString().trim { it <= ' ' }) -> {
@@ -70,6 +74,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun naviageToRecSenha() {
+        val recSenha = Intent(this, RecSenhaActivity::class.java);
+        startActivity(recSenha)    }
 
     private fun navigateSignIn() {
         val signInPage = Intent(this, SignInActivity::class.java);

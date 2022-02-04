@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.preko.speedcarv2" >
+    package="com.preko.speedcarv2">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:allowBackup="true"
@@ -11,55 +11,58 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name="com.preko.speedcarv2.ui.PagamentoActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light"/>
-        <activity
-            android:name="com.preko.speedcarv2.ui.RegInfoPessoalActivity"
+            android:name=".ui.RecSenhaActivity"
             android:exported="false" />
         <activity
-            android:name="com.preko.speedcarv2.ui.EditAccountActivity"
+            android:name=".ui.PagamentoActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name="com.preko.speedcarv2.ui.CriarViagemActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name="com.preko.speedcarv2.ui.DetalhesViagemActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name="com.preko.speedcarv2.ui.EdtViagemActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name="com.preko.speedcarv2.ui.ViagensActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name="com.preko.speedcarv2.ui.ViagemRealizadaActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name="com.preko.speedcarv2.ui.AccountActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name="com.preko.speedcarv2.ui.HomeActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name="com.preko.speedcarv2.ui.SignInActivity"
+            android:name=".ui.RegInfoPessoalActivity"
             android:exported="false" />
         <activity
-            android:name="com.preko.speedcarv2.ui.LoginActivity"
+            android:name=".ui.EditAccountActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.CriarViagemActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.DetalhesViagemActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.EdtViagemActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.ViagensActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.ViagemRealizadaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.AccountActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".ui.SignInActivity"
             android:exported="false" />
         <activity
-            android:name="com.preko.speedcarv2.ui.MainActivity"
-            android:exported="true" >
+            android:name=".ui.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

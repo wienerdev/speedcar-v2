@@ -19,6 +19,11 @@ import com.google.firebase.database.ValueEventListener
 import com.preko.speedcarv2.utils.HomeAdapter
 import com.preko.speedcarv2.utils.ViagemAdapter
 
+import androidx.annotation.NonNull
+import com.android.billingclient.api.*
+import com.preko.speedcarv2.utils.Prefs
+
+
 class HomeActivity : AppCompatActivity() {
 
     private val viewModel = MainViewModel()
@@ -32,10 +37,15 @@ class HomeActivity : AppCompatActivity() {
     val rootRef = FirebaseDatabase.getInstance().reference
     val viagemRef = uid?.let { rootRef.child("Trips").child(it) }
 
+    private lateinit var billingClient: BillingClient
+    private lateinit var prefs: Prefs
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        checkSubscription()
 
         binding.lvViagensHM.layoutManager = LinearLayoutManager(this)
         binding.lvViagensHM.setHasFixedSize(true)
@@ -149,6 +159,43 @@ class HomeActivity : AppCompatActivity() {
     fun navigateViagemRealizada() {
         val viagemRealizadaActivity = Intent(this, ViagemRealizadaActivity::class.java)
         startActivity(viagemRealizadaActivity)
+    }
+
+    fun checkSubscription() {
+        billingClient = BillingClient.newBuilder(this).enablePendingPurchases()
+            .setListener { billingResult: BillingResult?, list: List<Purchase?>? -> }
+            .build()
+
+        val finalBillingClient: BillingClient = billingClient
+
+        billingClient.startConnection(object : BillingClientStateListener {
+
+            override fun onBillingServiceDisconnected() {
+
+            }
+
+            override fun onBillingSetupFinished(billingResult: BillingResult) {
+                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                    finalBillingClient.queryPurchasesAsync(
+                        BillingClient.SkuType.SUBS
+                    ) { billingResult1: BillingResult, list: List<Purchase>? ->
+                        if (billingResult1.responseCode == BillingClient.BillingResponseCode.OK && list != null) {
+                            var i = 0
+                            for (purchase in list) {
+                                if (purchase.skus[i] == "assinatura_mensal_likeacar") {
+                                    Log.d("SubTest", purchase.toString() + "")
+                                    prefs.setPremium(1)
+                                } else {
+                                    prefs.setPremium(0)
+                                    navigateToPagamento()
+                                }
+                                i++
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
 
 

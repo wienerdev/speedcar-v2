@@ -31,7 +31,6 @@
             android:layout_width="106dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Tempo médio:"
             android:textColor="@color/black"
@@ -53,28 +52,36 @@
 
         <TextView
             android:id="@+id/txtOrigemViagemHM"
-            android:layout_width="230dp"
+            android:layout_width="265dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_semibold"
+            android:lineSpacingExtra="1dp"
+            android:maxLength="30"
             android:text="Copacabana"
             android:textColor="#9695A8"
             android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.004"
             app:layout_constraintStart_toEndOf="@+id/txtOrigemViagemVG2"
             app:layout_constraintTop_toBottomOf="@+id/txtRegiaoViagemHM" />
 
         <TextView
             android:id="@+id/txtDestinoViagemHM"
-            android:layout_width="230dp"
+            android:layout_width="265dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Ipanema"
+            android:maxLength="30"
             android:textColor="#9695A8"
             android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/txtOrigemViagemVG3"
-            app:layout_constraintTop_toTopOf="@+id/txtOrigemViagemVG3" />
+            app:layout_constraintTop_toBottomOf="@+id/txtOrigemViagemVG2" />
 
         <TextView
             android:id="@+id/txtOrigemViagemVG3"
@@ -92,7 +99,7 @@
             android:id="@+id/txtOrigemViagemVG2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Origem:"
@@ -105,13 +112,13 @@
             android:id="@+id/txtPrecoHM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="R$10,00"
             android:textColor="@color/black"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.913"
+            app:layout_constraintHorizontal_bias="0.938"
             app:layout_constraintStart_toEndOf="@+id/txtRegiaoViagemHM"
             app:layout_constraintTop_toTopOf="parent" />
 

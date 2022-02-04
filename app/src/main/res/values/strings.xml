@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name"></string>
     <string name="open">Aberto</string>
     <string name="close">Fechado</string>
     <string name="required">*Campo Obrigatório</string>
@@ -17,4 +16,5 @@
     PIX, boleto bancário, Casas Lotéricas ou cartão de débito virtual da Caixa.</string>
     <string name="txPagamentoPG3">Também é possível comprar gift cards do Google Play disponíveis na maioria dos mercados e
     lojas virtuais e físicas.</string>
+    <string name="app_name">LIKEACAR</string>
 </resources>

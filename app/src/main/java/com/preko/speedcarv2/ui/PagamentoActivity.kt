@@ -7,39 +7,53 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.anjlab.android.iab.v3.BillingProcessor
-import com.anjlab.android.iab.v3.PurchaseInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.preko.speedcarv2.R
 import com.preko.speedcarv2.databinding.ActivityPagamentoBinding
 import kotlinx.android.synthetic.main.activity_pagamento.*
+import com.android.billingclient.api.BillingClient
+import com.android.billingclient.api.BillingResult
+import com.android.billingclient.api.Purchase
+import com.android.billingclient.api.BillingClientStateListener
+import com.android.billingclient.api.SkuDetails
+import android.content.ContentValues.TAG
+import android.util.Log
+import com.android.billingclient.api.SkuDetailsParams
+import com.android.billingclient.api.BillingFlowParams
+import com.android.billingclient.api.AcknowledgePurchaseParams
+import com.preko.speedcarv2.utils.Prefs
 
-class PagamentoActivity : AppCompatActivity(), BillingProcessor.IBillingHandler {
+
+class PagamentoActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityPagamentoBinding
 
-    private lateinit var bp: BillingProcessor
-    private lateinit var purchaseInfo: PurchaseInfo
+    private lateinit var billingClient: BillingClient
+    private lateinit var prefs: Prefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPagamentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Inicializar um BillingClient
+        billingClient = BillingClient.newBuilder(this)
+            .enablePendingPurchases()
+            .setListener { billingResult, list ->
+                if (billingResult.getResponseCode() === BillingClient.BillingResponseCode.OK && list != null) {
+                    for (purchase in list) {
+                        verifySubPurchase(purchase)
+                    }
+                }
+            }.build()
+
+        //start the connection after initializing the billing client
+        establishConnection()
+
         binding.tvTextoPagamentoPG5.setOnClickListener {
             val googlePlay = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/intl/ALL_br/about/giftcards/#where-to-buy"))
             startActivity(googlePlay)
-        }
-
-        bp = BillingProcessor(this,
-            "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmYoQjaGSzUXsAFjQn4mp3B8e+woMWqZGi5p92pLBy94v5ACFf78ofLF45e0/w+Upx3JmAHaShcBbkLelKnabQwTxjKHhnzMJQH9iSfVZ3WPwN03jCXnwLblCL7Cc0R/VaQngfaakfjNomjPolddXGIdwCwmxCNXsbTGQMpsYOgdLvdmvRy1UUZ75t+vNDZvWJKhjkDIzB57bk9s4SkcHPnMeS37dnMubs5Ii/n0NRIPAEWzF4dyh40ZJwX+crhELefBh4vpb8Yc1R355jha7toIf8WSUo3TLrjQkGlh8XQadFr1jMGzDciRm7CTg7HNXtZ/eLxXMdn+IxCSUMaVmDQIDAQAB",
-            this)
-        bp.initialize()
-
-        binding.btnComprarPG.setOnClickListener {
-
-            bp.subscribe(this, "plano_mensal_vem_comigo")
         }
 
         binding.btnVoltarPG.setOnClickListener {
@@ -69,6 +83,94 @@ class PagamentoActivity : AppCompatActivity(), BillingProcessor.IBillingHandler 
             true
         }
     }
+
+    fun establishConnection() {
+        billingClient.startConnection(object : BillingClientStateListener {
+            override fun onBillingSetupFinished(billingResult: BillingResult) {
+                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                    showProducts()
+                }
+            }
+
+            override fun onBillingServiceDisconnected() {
+                // Try to restart the connection on the next request to
+                // Google Play by calling the startConnection() method.
+                establishConnection()
+            }
+        })
+    }
+
+    fun showProducts() {
+        // The BillingClient is ready. You can query purchases here.
+        val skuList= ArrayList<String>()
+        skuList.add("assinatura_mensal_likeacar")
+        val params = SkuDetailsParams.newBuilder()
+        params.setSkusList(skuList).setType(BillingClient.SkuType.SUBS)
+        billingClient.querySkuDetailsAsync(
+            params.build()
+        ) { billingResult, skuDetailsList ->
+            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && skuDetailsList != null) {
+                // Process the result.
+                for (skuDetails in skuDetailsList) {
+                    if (skuDetails.sku == "assinatura_mensal_likeacar") {
+                        binding.btnComprarPG.setOnClickListener {
+                            launchPurchaseFlow(skuDetails)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun launchPurchaseFlow(skuDetails: SkuDetails?) {
+        val billingFlowParams = BillingFlowParams.newBuilder()
+            .setSkuDetails(skuDetails!!)
+            .build()
+        billingClient.launchBillingFlow(this@PagamentoActivity, billingFlowParams)
+    }
+
+    fun verifySubPurchase(purchases: Purchase) {
+        val acknowledgePurchaseParams = AcknowledgePurchaseParams
+            .newBuilder()
+            .setPurchaseToken(purchases.purchaseToken)
+            .build()
+        billingClient.acknowledgePurchase(
+            acknowledgePurchaseParams
+        ) { billingResult ->
+            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                //Toast.makeText(SubscriptionActivity.this, "Item Consumed", Toast.LENGTH_SHORT).show();
+                // Handle the success of the consume operation.
+                //user prefs to set premium
+                Toast.makeText(this@PagamentoActivity, "Assinatura realizada com sucesso!", Toast.LENGTH_SHORT)
+                    .show()
+                //updateUser();
+
+                //Setting premium to 1
+                // 1 - premium
+                //0 - no premium
+                prefs.setPremium(1)
+            }
+        }
+        Log.d(TAG, "Purchase Token: " + purchases.purchaseToken)
+        Log.d(TAG, "Purchase Time: " + purchases.purchaseTime)
+        Log.d(TAG, "Purchase OrderID: " + purchases.orderId)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        billingClient.queryPurchasesAsync(
+            BillingClient.SkuType.SUBS
+        ) { billingResult, list ->
+            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                for (purchase in list) {
+                    if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED && !purchase.isAcknowledged) {
+                        verifySubPurchase(purchase)
+                    }
+                }
+            }
+        }
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
@@ -104,56 +206,5 @@ class PagamentoActivity : AppCompatActivity(), BillingProcessor.IBillingHandler 
         val homeActivity = Intent(this, HomeActivity::class.java)
         startActivity(homeActivity)
     }
-
-    override fun onProductPurchased(productId: String, details: PurchaseInfo?) {
-        Toast.makeText(this, "Compra efetuada com sucesso!", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPurchaseHistoryRestored() {
-//        TODO("Not yet implemented")
-    }
-
-    override fun onBillingError(errorCode: Int, error: Throwable?) {
-//        TODO("Not yet implemented")
-    }
-
-    override fun onBillingInitialized() {
-//        TODO("Not yet implemented")
-
-        bp.loadOwnedPurchasesFromGoogleAsync(object : BillingProcessor.IPurchasesResponseListener{
-            override fun onPurchasesSuccess() {
-                TODO("Not yet implemented")
-            }
-
-            override fun onPurchasesError() {
-                TODO("Not yet implemented")
-            }
-
-        })
-
-        if (bp.getSubscriptionPurchaseInfo("plano_mensal_vem_comigo") != null) {
-
-            purchaseInfo = bp.getSubscriptionPurchaseInfo("plano_mensal_vem_comigo")!!
-
-            if (purchaseInfo != null) {
-                if (purchaseInfo.purchaseData.autoRenewing) {
-                    Toast.makeText(this, "Você já é um assinante!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Você não é um assinante!", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(this, "Assinatura vencida!", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-    }
-
-    override fun onDestroy() {
-        if (bp != null) {
-            bp.release()
-        }
-        super.onDestroy()
-    }
-
 
 }

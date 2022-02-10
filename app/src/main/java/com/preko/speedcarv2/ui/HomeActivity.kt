@@ -1,34 +1,37 @@
 package com.preko.speedcarv2.ui
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.preko.speedcarv2.R
-import com.preko.speedcarv2.databinding.ActivityHomeBinding
-import com.preko.speedcarv2.viewModel.MainViewModel
+import com.android.billingclient.api.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.preko.speedcarv2.R
+import com.preko.speedcarv2.databinding.ActivityHomeBinding
 import com.preko.speedcarv2.utils.HomeAdapter
-import com.preko.speedcarv2.utils.ViagemAdapter
-
-import androidx.annotation.NonNull
-import com.android.billingclient.api.*
-import com.preko.speedcarv2.utils.Prefs
+import com.preko.speedcarv2.viewModel.QonversionViewModel
+import com.qonversion.android.sdk.Qonversion
+import com.qonversion.android.sdk.QonversionError
+import com.qonversion.android.sdk.QonversionOfferingsCallback
+import com.qonversion.android.sdk.QonversionPermissionsCallback
+import com.qonversion.android.sdk.dto.QPermission
+import com.qonversion.android.sdk.dto.offerings.QOfferings
 
 
 class HomeActivity : AppCompatActivity() {
 
-    private val viewModel = MainViewModel()
-
     var viagemList: ArrayList<com.preko.speedcarv2.model.ViagemModel> = arrayListOf<com.preko.speedcarv2.model.ViagemModel>()
+
+    val viewModelQonv: QonversionViewModel = QonversionViewModel()
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding: ActivityHomeBinding
@@ -37,15 +40,10 @@ class HomeActivity : AppCompatActivity() {
     val rootRef = FirebaseDatabase.getInstance().reference
     val viagemRef = uid?.let { rootRef.child("Trips").child(it) }
 
-    private lateinit var billingClient: BillingClient
-    private lateinit var prefs: Prefs
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        checkSubscription()
 
         binding.lvViagensHM.layoutManager = LinearLayoutManager(this)
         binding.lvViagensHM.setHasFixedSize(true)
@@ -90,6 +88,28 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Qonversion.checkPermissions(object : QonversionPermissionsCallback {
+            override fun onError(error: QonversionError) {
+                Log.d("teste", "onError: ${error.description}")
+            }
+
+            override fun onSuccess(permissions: Map<String, QPermission>) {
+                val premiumPermission = permissions["plano_mensal_vem_comigo"]
+
+                premiumPermission?.let {
+
+                    if (!it.isActive()) {
+                        navigateToPagamento()
+                    }
+                }
+
+            }
+        })
     }
 
     fun readData() {
@@ -154,48 +174,6 @@ class HomeActivity : AppCompatActivity() {
     fun navigateToPagamento() {
         val pagamentoActivity = Intent(this, PagamentoActivity::class.java)
         startActivity(pagamentoActivity)
-    }
-
-    fun navigateViagemRealizada() {
-        val viagemRealizadaActivity = Intent(this, ViagemRealizadaActivity::class.java)
-        startActivity(viagemRealizadaActivity)
-    }
-
-    fun checkSubscription() {
-        billingClient = BillingClient.newBuilder(this).enablePendingPurchases()
-            .setListener { billingResult: BillingResult?, list: List<Purchase?>? -> }
-            .build()
-
-        val finalBillingClient: BillingClient = billingClient
-
-        billingClient.startConnection(object : BillingClientStateListener {
-
-            override fun onBillingServiceDisconnected() {
-
-            }
-
-            override fun onBillingSetupFinished(billingResult: BillingResult) {
-                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                    finalBillingClient.queryPurchasesAsync(
-                        BillingClient.SkuType.SUBS
-                    ) { billingResult1: BillingResult, list: List<Purchase>? ->
-                        if (billingResult1.responseCode == BillingClient.BillingResponseCode.OK && list != null) {
-                            var i = 0
-                            for (purchase in list) {
-                                if (purchase.skus[i] == "assinatura_mensal_likeacar") {
-                                    Log.d("SubTest", purchase.toString() + "")
-                                    prefs.setPremium(1)
-                                } else {
-                                    prefs.setPremium(0)
-                                    navigateToPagamento()
-                                }
-                                i++
-                            }
-                        }
-                    }
-                }
-            }
-        })
     }
 
 

@@ -60,8 +60,8 @@ class CriarViagemActivity : AppCompatActivity() {
             val regiao = binding.edtRegiaoCRVG.text.toString()
             val origem = binding.edtOrigemCRVG.text.toString()
             val destino = binding.edtDestinoCRVG.text.toString()
-            val preco = binding.edtPrecoCRVG.text.toString()
-            val tempoMedio = binding.edtTempoMedioCRVG.text.toString()
+            val preco = "R$"+binding.edtPrecoCRVG.text.toString()
+            val tempoMedio = binding.edtTempoMedioCRVG.text.toString() + " minutos"
             val nomePassageiro = binding.edtNomePassageiroCRVG.text.toString()
             val cpfPassageiro = binding.edtCpfPassageiroCRVG.text.toString()
             val telefonePassageiro = binding.edtTelefonePassageiroCRVG.text.toString()

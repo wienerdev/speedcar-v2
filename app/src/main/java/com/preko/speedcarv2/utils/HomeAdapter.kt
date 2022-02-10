@@ -20,7 +20,7 @@ open class HomeAdapter(private val viagemList: ArrayList<com.preko.speedcarv2.mo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.viagem_card_home,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.viagem_card,
             parent, false)
 
         val holder = HomeViewHolder(itemView)

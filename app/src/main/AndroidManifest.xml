@@ -6,6 +6,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
+        android:name=".utils.QonversionApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,8 +18,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.PagamentoActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:exported="false" />
         <activity
             android:name=".ui.RegInfoPessoalActivity"
             android:exported="false" />

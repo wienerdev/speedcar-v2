@@ -43,7 +43,6 @@ open class ViagemAdapter(private val viagemList: ArrayList<com.preko.speedcarv2.
         val destino : TextView = itemView.txtDestinoViagemHM
         val tempoMedio : TextView = itemView.txtTempoViagemHM
         val preco : TextView = itemView.txtPrecoHM
-        val btnEditarViagem : Button = itemView.btnEditarViagemVG
         val context = itemView.context
 
     }
@@ -59,10 +58,10 @@ open class ViagemAdapter(private val viagemList: ArrayList<com.preko.speedcarv2.
         holder.tempoMedio.text = currentViagem.tempoMedio
         holder.preco.text = currentViagem.preco
 
-        holder.btnEditarViagem.setOnClickListener {
-            val intent = Intent(holder.context, EdtViagemActivity::class.java)
-            holder.context.startActivity(intent)
-        }
+//        holder.btnEditarViagem.setOnClickListener {
+//            val intent = Intent(holder.context, EdtViagemActivity::class.java)
+//            holder.context.startActivity(intent)
+//        }
     }
 
 
